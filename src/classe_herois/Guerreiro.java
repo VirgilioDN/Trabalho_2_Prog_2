@@ -8,5 +8,7 @@ public class Guerreiro extends Hero {
     public Guerreiro(String name, int forca, int constituicao, int destreza, int intelecto) {
     	super(name, forca, constituicao, destreza, intelecto);
     }
+
+	
 }
 

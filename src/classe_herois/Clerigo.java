@@ -9,4 +9,6 @@ public class Clerigo extends Hero{
     public Clerigo(String name, int forca, int constituicao, int destreza, int intelecto) {
     	super(name, forca, constituicao, destreza, intelecto);
     }
+
+	
 }
