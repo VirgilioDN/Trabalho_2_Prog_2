@@ -14,9 +14,8 @@ public class Game {
     
     public Game() {
         setDificuldade();
-        hero.criarPersonagem();
-        Monster monster = new Monster();
-        monster.criaMonstros();
+        Hero.criarPersonagem();
+        Monster.criaMonstros();
     }
 
     public void comecarJogo() {

@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Monster extends Player {
 
-    private ArrayList<Monster> monstros = new ArrayList<>();
+    private static ArrayList<Monster> monstros = new ArrayList<>();
     //Goblin, Aranha, Goster, Orc, Esqueleto, Zabur
     static double PESOS_FACIL[] = {0.30, 0.60, 0.90, 0.95, 1.0};
     static double PESOS_MEDIO[] = {0.25, 0.50, 0.75, 0.90, 1.0};
@@ -17,7 +17,7 @@ public class Monster extends Player {
         super(name, forca, constituicao, destreza, intelecto);
     }
 
-    public void tipoMonstros(int qtd, double pesos[]){
+    public static void tipoMonstros(int qtd, double pesos[]){
             for (int i = 0; i < qtd; i++){
                 double opcao = Math.random();
                 System.out.println("Opcao: " + opcao);
@@ -44,7 +44,7 @@ public class Monster extends Player {
             }
         }
     
-    public void criaMonstros(){
+    public static void criaMonstros(){
         int qtd;
         Random r = new Random();
         if (Game.getDificuldade() == Game.Level.FACIL){

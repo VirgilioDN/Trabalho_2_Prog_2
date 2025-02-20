@@ -18,7 +18,7 @@ public class Hero extends Player {
         super(name, forca, constituicao, destreza, intelecto);
     }
 
-    public void criarPersonagem() {
+    public static void criarPersonagem() {
         Scanner s = new Scanner(System.in);
         for (int i = 0; i <= 3; ++i) {
         	
@@ -168,4 +168,8 @@ public class Hero extends Player {
             System.out.println();
         }
     }
+
+	public static ArrayList<Hero> getHeros() {
+		return heros;
+	}
 }

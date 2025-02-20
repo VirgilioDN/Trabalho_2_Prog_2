@@ -16,9 +16,9 @@ public class Harag extends Monster {
     
     public void ataqueEspecial (){
         if ((qtdAtaqueEspecial < 2) && (super.getConstituicao() < 75)){
-            heros.forEach((h) -> {
-                h.setVida(h.getVida() - 10);
-            }); 
+            for (Hero h : Hero.getHeros()){
+                h.setHealth((h.getHealth() - 10));
+            }
             qtdAtaqueEspecial++;
         }
     }

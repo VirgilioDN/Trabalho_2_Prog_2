@@ -14,6 +14,9 @@ public class Player {
     protected int defesa;
     protected int velocidade;
     protected static ArrayList<Player> players = new ArrayList<Player>();
+
+    public Player() {
+    }
     
     public Player(String name, int forca, int constituicao, int destreza, int intelecto) {
         this.name = name;
