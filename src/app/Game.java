@@ -21,12 +21,7 @@ public class Game {
     }
 
     public void comecarJogo() {
-        
 
-
-        
-        
-        //this.turno.iniciar();
     }
 
     public enum Level{
