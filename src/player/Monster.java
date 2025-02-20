@@ -1,6 +1,11 @@
 package player;
 
 import app.Game;
+import classe_monstros.Aranha;
+import classe_monstros.Goblin;
+import classe_monstros.Goster;
+import classe_monstros.Orc;
+import classe_monstros.Zabur;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,23 +27,25 @@ public class Monster extends Player {
                 double opcao = Math.random();
                 System.out.println("Opcao: " + opcao);
                 if (opcao <= pesos[0]){
-                    monstros.add(new Monster("Goblin", 10, 10, 10, 10));
-                    players.add(new Monster("Goblin", 10, 10, 10, 10));
+                    Goblin goblin = new Goblin();
+                    
+                    //players.add(new Monster("Goblin", 10, 10, 10, 10));
                 }
                 else if (opcao <= pesos[1]){
-                    players.add(new Monster("Orc", 15, 15, 15, 15));
+                    Aranha aranha = new Aranha();
+                    //players.add(new Monster("Orc", 15, 15, 15, 15));
                 }
                 else if (opcao <= pesos[2]){
-                    players.add(new Monster("Esqueleto", 10, 10, 10, 10));
+                    Goster goster = new Goster();
+                    //players.add(new Monster("Esqueleto", 10, 10, 10, 10));
                 }
                 else if (opcao <= pesos[3]){
-                    players.add(new Monster("Zumbi", 10, 10, 10, 10));
+                    Orc orc = new Orc();
+                    //players.add(new Monster("Zumbi", 10, 10, 10, 10));
                 }
                 else if (opcao <= pesos[4]){
-                    players.add(new Monster("Lobo", 10, 10, 10, 10));
-                }
-                else if (opcao <= pesos[5]){
-                    players.add(new Monster("Dragão", 20, 20, 20, 20));
+                    Zabur zabur = new Zabur();
+                    //players.add(new Monster("Lobo", 10, 10, 10, 10));
                 }
                 System.out.println("Monstro " + players.get(i).getName() + " criado!");
             }

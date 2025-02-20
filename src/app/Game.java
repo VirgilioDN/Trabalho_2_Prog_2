@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 import player.Hero;
 import player.Monster;
+import player.Player;
 
 
 public class Game {
@@ -16,6 +17,7 @@ public class Game {
         setDificuldade();
         Hero.criarPersonagem();
         Monster.criaMonstros();
+        Player.listaPlayers();
     }
 
     public void comecarJogo() {
