@@ -1,6 +1,7 @@
 package player;
 
 import app.Dado;
+import java.util.ArrayList;
 
 public class Player {
     protected String name;
@@ -12,10 +13,7 @@ public class Player {
     protected int ataque;
     protected int defesa;
     protected int velocidade;
-
-    public Player() {
-
-    }
+    protected static ArrayList<Player> players = new ArrayList<Player>();
     
     public Player(String name, int forca, int constituicao, int destreza, int intelecto) {
         this.name = name;
@@ -27,6 +25,7 @@ public class Player {
         this.ataque = forca * 2;
         this.defesa = constituicao * 2;
         this.velocidade = destreza * 2;
+        players.add(this);
     }
 
     public String getName() {
@@ -126,4 +125,33 @@ public class Player {
         // Criar
     }
 
+    
+    public static void listaPlayers() {
+        System.out.println("\n=== Lista de Jogadores ===\n");
+
+        // Linha superior das caixas
+        for (Player p : players) {
+            System.out.printf("+------------+  ");
+        }
+        System.out.println();
+    
+        // Nome dos jogadores
+        for (Player p : players) {
+            System.out.printf("| %-10s |  ", p.getName());
+        }
+        System.out.println();
+    
+        // Vida dos jogadores com coração ❤️
+        for (Player p : players) {
+            System.out.printf("| \u2764\uFE0F %-8d |  ", p.getHealth());
+        }
+        System.out.println();
+    
+        // Linha inferior das caixas
+        for (Player p : players) {
+            System.out.printf("+------------+  ");
+        }
+        System.out.println("\n");
+        
+    }
 }

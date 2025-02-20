@@ -9,5 +9,8 @@ public class Arqueiro extends Hero {
     public Arqueiro(String name, int forca, int constituicao, int destreza, int intelecto) {
     	super(name, forca, constituicao, destreza, intelecto);
     }
+
+	
+	
 }
 

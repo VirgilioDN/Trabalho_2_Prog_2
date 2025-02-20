@@ -1,6 +1,5 @@
 package player;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,11 +12,7 @@ import classe_herois.Paladino;
 import classe_herois.Clerigo;
 
 public class Hero extends Player {
-    private ArrayList<Hero> heros;
-
-    public Hero() {
-        this.heros = new ArrayList<Hero>();
-    }
+    private static ArrayList<Hero> heros = new ArrayList<Hero>();
 
     public Hero(String name, int forca, int constituicao, int destreza, int intelecto) {
         super(name, forca, constituicao, destreza, intelecto);
@@ -112,6 +107,7 @@ public class Hero extends Player {
 	                    Guerreiro guerreiro = new Guerreiro(name, forca, constituicao, destreza, intelecto);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(guerreiro);
+						players.add(guerreiro);
 	                    break;
 	                case 2:
 	                	intelecto = 
@@ -119,6 +115,7 @@ public class Hero extends Player {
 	                    Mago mago = new Mago(name, forca, constituicao, destreza, intelecto);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(mago);
+						players.add(mago);
 	                    break;
 	                case 3:
 	                	intelecto = 
@@ -126,6 +123,7 @@ public class Hero extends Player {
 	                    Ladino ladino = new Ladino(name, forca, constituicao, destreza, intelecto);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(ladino);
+						players.add(ladino);
 	                    break;
 	                case 4:
 	                	intelecto = 
@@ -133,6 +131,7 @@ public class Hero extends Player {
 	                    Paladino paladino = new Paladino(name, forca, constituicao, destreza, intelecto);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(paladino);
+						players.add(paladino);
 	                    break;
 	                case 5:
 	                	intelecto = 
@@ -147,6 +146,7 @@ public class Hero extends Player {
 	                    Arqueiro arqueiro = new Arqueiro(name, forca, constituicao, destreza, intelecto);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(arqueiro);
+						players.add(arqueiro);
 	                    break;
 	                default:
 	                    System.out.println("Opção inválida!");
