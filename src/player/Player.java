@@ -19,7 +19,7 @@ public class Player {
 
     public Player() {
     }
-    
+
     public Player(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
         this.name = name;
         this.forca = forca;
@@ -71,11 +71,11 @@ public class Player {
         return velocidade;
     }
 
-    public int getAtual_Health(){
+    public int getAtual_Health() {
         return atual_health;
     }
 
-    public double getAggro(){
+    public double getAggro() {
         return aggro;
     }
 
@@ -106,43 +106,45 @@ public class Player {
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-    
-    //TODO
-    //debugar a esquiva, ela sempre ta esquivando
+
+    // TODO
+    // debugar a esquiva, ela sempre ta esquivando
     public Boolean esquiva(Player player) {
-    	Dado player_dado = new Dado();
-    	Dado monstro_dado = new Dado();
-    	if((player_dado.D20()) > (monstro_dado.D20()+(player.destreza*0.4))) {
-    		return true;
-    	}else {
-    		return false;
-    	}
-		
-    }
-    
-    public void attack(Player player) {
-    	if(this.esquiva(player)) {
-    		System.out.println(player.name + " esquivou do ataque de " + this.name);
-    	}else {
-    		player.health -= this.ataque - (player.defesa * 0.4) ;
-            System.out.println(this.name + " atacou o jogador " + player.name + " com " + (this.ataque - (player.defesa * 0.4)) + " de dano.");
-    	}
+        Dado player_dado = new Dado();
+        Dado monstro_dado = new Dado();
+        if ((player_dado.D20()) > (monstro_dado.D20() + (player.destreza * 0.4))) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
-    
-    /* será desenvolvida quando tivermos turnos
-    public void block(Player player) {
-        player.health -= this.defesa;
-        System.out.println(
-                "O jogador " + this.name + " bloqueou o ataque do jogador " + player.name + " com " + this.defesa
-                        + " de dano.");
-    }*/
+    public void attack(Player player) {
+        if (this.esquiva(player)) {
+            System.out.println(player.name + " esquivou do ataque de " + this.name);
+        } else {
+            player.health -= this.ataque - (player.defesa * 0.4);
+            System.out.println(this.name + " atacou o jogador " + player.name + " com "
+                    + (this.ataque - (player.defesa * 0.4)) + " de dano.");
+        }
+    }
+
+    /*
+     * será desenvolvida quando tivermos turnos
+     * public void block(Player player) {
+     * player.health -= this.defesa;
+     * System.out.println(
+     * "O jogador " + this.name + " bloqueou o ataque do jogador " + player.name +
+     * " com " + this.defesa
+     * + " de dano.");
+     * }
+     */
 
     public void ataqueEspecial(Player player) {
         // Criar
     }
 
-    
     public static void listaPlayers() {
         System.out.println("\n=== Lista de Jogadores ===\n");
 
@@ -151,25 +153,38 @@ public class Player {
             System.out.printf("+------------+  ");
         }
         System.out.println();
-    
+
         // Nome dos jogadores
         for (Player p : players) {
             System.out.printf("| %-10s |  ", p.getName());
         }
         System.out.println();
-    
+
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| \u2764\uFE0F %-8d |  ",p.getHealth(), "/" ,p.getAtual_Health());
-            System.out.printf("/" ,p.getAtual_Health());
+            System.out.printf("| \u2764\uFE0F %-8d |  ", p.getHealth(), "/", p.getAtual_Health());
+            System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
-    
+
         // Linha inferior das caixas
         for (Player p : players) {
             System.out.printf("+------------+  ");
         }
         System.out.println("\n");
-        
+
+    }
+
+    public boolean isDead() {
+        return this.health <= 0;
+    }
+
+    public <T extends Player> boolean isTeamDead(ArrayList<T> heros) {
+        for (Player player : heros) {
+            if (!(player.isDead())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
