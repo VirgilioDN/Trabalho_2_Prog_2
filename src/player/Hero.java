@@ -200,9 +200,13 @@ public class Hero extends Player {
 					System.out.println("Quem quer atacar?\n");
 					escolha = s.nextInt();
 					player_atual.attack(heros.get(escolha-1));
+					listaPlayers();
+					heroAtributos();
 					break;
 				case 2:
-					a.IA_facil(player_atual);
+					a.IA_monstros(player_atual);
+					listaPlayers();
+					heroAtributos();
 					break;
 				default:
 					System.out.println("Opção inválida!");

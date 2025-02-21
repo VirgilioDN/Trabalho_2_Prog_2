@@ -112,7 +112,7 @@ public class Player {
     public Boolean esquiva(Player player) {
     	Dado player_dado = new Dado();
     	Dado monstro_dado = new Dado();
-    	if((player_dado.D20()+this.destreza) > (monstro_dado.D20()+player.destreza)) {
+    	if((player_dado.D20()) > (monstro_dado.D20()+(player.destreza*0.4))) {
     		return true;
     	}else {
     		return false;
@@ -122,10 +122,10 @@ public class Player {
     
     public void attack(Player player) {
     	if(this.esquiva(player)) {
-    		System.out.println("O jogador " + this.name + " esquivou");
+    		System.out.println(player.name + " esquivou do ataque de " + this.name);
     	}else {
-    		player.health -= (player.defesa * 0.4) - this.ataque ;
-            System.out.println("O jogador " + this.name + " atacou o jogador " + player.name + " com " + ((player.defesa * 0.4) - this.ataque) + " de dano.");
+    		player.health -= this.ataque - (player.defesa * 0.4) ;
+            System.out.println(this.name + " atacou o jogador " + player.name + " com " + (this.ataque - (player.defesa * 0.4)) + " de dano.");
     	}
     }
 
@@ -161,6 +161,7 @@ public class Player {
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
             System.out.printf("| \u2764\uFE0F %-8d |  ",p.getHealth(), "/" ,p.getAtual_Health());
+            System.out.printf("/" ,p.getAtual_Health());
         }
         System.out.println();
     
