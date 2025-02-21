@@ -18,6 +18,8 @@ public class Game {
         Hero.criarPersonagem();
         Monster.criaMonstros();
         Player.listaPlayers();
+        Hero.heroAtributos();
+        Hero.menuHeroi();
     }
 
     public void comecarJogo() {

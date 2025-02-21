@@ -14,8 +14,8 @@ import classe_herois.Clerigo;
 public class Hero extends Player {
     private static ArrayList<Hero> heros = new ArrayList<Hero>();
 
-    public Hero(String name, int forca, int constituicao, int destreza, int intelecto) {
-        super(name, forca, constituicao, destreza, intelecto);
+    public Hero(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
+        super(name, forca, constituicao, destreza, intelecto, aggro);
     }
 
     public static void criarPersonagem() {
@@ -28,11 +28,16 @@ public class Hero extends Player {
             System.out.println("Escolha a classe de seu personagem!");
             System.out.println("1 - Guerreiro\n" + 
             					"Atributos: Força: 15, Constituição: 12, Destreza: 7, Intelecto: 7");
-            System.out.println("2 - Mago");
-            System.out.println("3 - Ladino");
-            System.out.println("4 - Paladino");
-            System.out.println("5 - Clérigo");
-            System.out.println("6 - Arqueiro");
+            System.out.println("2 - Mago\n" +
+								"Atributos: Força: 7, Constituição: 10, Destreza: 9, Intelecto: 14");
+            System.out.println("3 - Ladino\n" + 
+								"Atributos: Força: 12, Constituição: 7, Destreza: 14, Intelecto: 7");
+            System.out.println("4 - Paladino\n" +
+								"Atributos: Força: 12, Constituição: 14, Destreza: 6, Intelecto: 8");
+            System.out.println("5 - Clérigo\n" +
+								"Atributos: Força: 8, Constituição: 12, Destreza: 8, Intelecto: 12");
+            System.out.println("6 - Arqueiro\n" +
+								"Atributos: Força: 12, Constituição: 10, Destreza: 12, Intelecto: 8");
             
             //nao vejo necessidade de um sair
             //System.out.println("7 - Sair");
@@ -70,7 +75,7 @@ public class Hero extends Player {
             	atributos -= forca;
             	
             	//Constituição
-            	System.out.print("Quantos pontos quer atribuir a Constituição?? ");
+            	System.out.print("Quantos pontos quer atribuir a Constituição? ");
             	int constituicao = s.nextInt();
             	while(atributos - constituicao < 0) {
             		System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
@@ -80,7 +85,7 @@ public class Hero extends Player {
             	atributos -= constituicao;
             	
             	//destreza
-            	System.out.print("Quantos pontos quer atribuir a Destreza?? ");
+            	System.out.print("Quantos pontos quer atribuir a Destreza? ");
             	int destreza = s.nextInt();
             	while(atributos - destreza < 0) {
             		System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
@@ -90,7 +95,7 @@ public class Hero extends Player {
             	atributos -= destreza;
             	
             	//intelecto
-            	System.out.print("Quantos pontos quer atribuir a Intelecto?? ");
+            	System.out.print("Quantos pontos quer atribuir a Intelecto? ");
             	int intelecto = s.nextInt();
             	while(atributos - intelecto < 0) {
             		System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
@@ -98,48 +103,50 @@ public class Hero extends Player {
                 	intelecto = s.nextInt();
             	}
             	atributos -= intelecto;
+				//teste
+				double aggro;
             	
             	if(atributos == 0) {
 	            	switch (opcao) {
 	                case 1:
 	                	intelecto = 
-	                	forca += 15;  constituicao += 12;  destreza += 7;  intelecto += 7;
-	                    Guerreiro guerreiro = new Guerreiro(name, forca, constituicao, destreza, intelecto);
+	                	forca += 14;  constituicao += 12;  destreza += 7;  intelecto += 7; aggro = 1.25;
+	                    Guerreiro guerreiro = new Guerreiro(name, forca, constituicao, destreza, intelecto, aggro);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(guerreiro);
 	                    break;
 	                case 2:
 	                	intelecto = 
-	                	forca += 15;  constituicao += 12;  destreza += 7;  intelecto += 7;
-	                    Mago mago = new Mago(name, forca, constituicao, destreza, intelecto);
+	                	forca += 7;  constituicao += 10;  destreza += 9;  intelecto += 14; aggro = 0.75;
+	                    Mago mago = new Mago(name, forca, constituicao, destreza, intelecto, aggro);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(mago);
 	                    break;
 	                case 3:
 	                	intelecto = 
-	                	forca += 15;  constituicao += 12;  destreza += 7;  intelecto += 7;
-	                    Ladino ladino = new Ladino(name, forca, constituicao, destreza, intelecto);
+	                	forca += 12;  constituicao += 7;  destreza += 14;  intelecto += 7; aggro = 0.75;
+	                    Ladino ladino = new Ladino(name, forca, constituicao, destreza, intelecto, aggro);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(ladino);
 	                    break;
 	                case 4:
 	                	intelecto = 
-	                	forca += 15;  constituicao += 12;  destreza += 7;  intelecto += 7;
-	                    Paladino paladino = new Paladino(name, forca, constituicao, destreza, intelecto);
+	                	forca += 12;  constituicao += 14;  destreza += 6;  intelecto += 8; aggro = 1.25;
+	                    Paladino paladino = new Paladino(name, forca, constituicao, destreza, intelecto, aggro);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(paladino);
 	                    break;
 	                case 5:
 	                	intelecto = 
-	                	forca += 15;  constituicao += 12;  destreza += 7;  intelecto += 7;
-	                    Clerigo clerigo = new Clerigo(name, forca, constituicao, destreza, intelecto);
+	                	forca += 8;  constituicao += 12;  destreza += 8;  intelecto += 12; aggro = 1;
+	                    Clerigo clerigo = new Clerigo(name, forca, constituicao, destreza, intelecto, aggro);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(clerigo);
 	                    break;
 	                case 6:
 	                	intelecto = 
-	                	forca += 15;  constituicao += 12;  destreza += 7;  intelecto += 7;
-	                    Arqueiro arqueiro = new Arqueiro(name, forca, constituicao, destreza, intelecto);
+	                	forca += 12;  constituicao += 18;  destreza += 12;  intelecto += 8; aggro = 1;
+	                    Arqueiro arqueiro = new Arqueiro(name, forca, constituicao, destreza, intelecto, aggro);
 	                    System.out.println("Personagem criado com sucesso!\n");
 	                    heros.add(arqueiro);
 	                    break;
@@ -161,9 +168,48 @@ public class Hero extends Player {
             System.out.println("Constituição: " + hero.getConstituicao());
             System.out.println("Destreza: " + hero.getDestreza());
             System.out.println("Intelecto: " + hero.getIntelecto());
+			//debug
+			System.out.println("aggro: " + hero.getAggro());
+            System.out.println();
             System.out.println();
         }
     }
+
+	public static void heroAtributos(){
+		for (Hero hero : heros) {
+            System.out.println("Dano: " + hero.getAtaque());
+            System.out.println("Vida: " + hero.getHealth() + "/" + hero.getAtual_Health());
+            System.out.println("Defesa: " + hero.getDefesa());
+            System.out.println("Velociade: " + hero.getVelocidade());
+            System.out.println();
+        }
+	}
+
+		//testes
+	public static void menuHeroi(){
+		IA a =  new IA(heros);
+		System.out.println(a);
+		for(int i = 0; i < 4; i++){
+			Hero player_atual = heros.get(i);
+			Scanner s = new Scanner(System.in);
+			System.out.println("Ataque - 1\nIA - 2");
+			int r = s.nextInt();
+			int escolha;
+			switch (r) {
+				case 1:
+					System.out.println("Quem quer atacar?\n");
+					escolha = s.nextInt();
+					player_atual.attack(heros.get(escolha-1));
+					break;
+				case 2:
+					a.IA_facil(player_atual);
+					break;
+				default:
+					System.out.println("Opção inválida!");
+					break;
+			}
+		}
+	}
 
 	public static ArrayList<Hero> getHeros() {
 		return heros;

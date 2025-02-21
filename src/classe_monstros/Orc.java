@@ -7,7 +7,7 @@ public class Orc extends Monster {
     static int orc = 0;
 
     public Orc() {
-        super("Orc " + (++orc), 15, 3, 2, 1);
+        super("Orc " + (++orc), 15, 3, 2, 1,1);
     }
 
 }

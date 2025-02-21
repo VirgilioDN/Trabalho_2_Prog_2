@@ -10,7 +10,7 @@ public class Harag extends Monster {
 
     public Harag() {
         //Considero que constituição seja o PV
-        super("Harag " + (++harag), 20, 300, 3, 2);
+        super("Harag " + (++harag), 20, 300, 3, 2,1);
     }
 
     

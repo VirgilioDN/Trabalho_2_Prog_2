@@ -18,8 +18,8 @@ public class Monster extends Player {
     static double PESOS_MEDIO[] = {0.25, 0.50, 0.75, 0.90, 1.0};
     static double PESOS_DIFICIL[] = {0.20, 0.40, 0.60, 0.80, 1.0};
 
-    public Monster(String name, int forca, int constituicao, int destreza, int intelecto) {
-        super(name, forca, constituicao, destreza, intelecto);
+    public Monster(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
+        super(name, forca, constituicao, destreza, intelecto, aggro);
     }
 
     public static void tipoMonstros(int qtd, double pesos[]){
@@ -29,23 +29,23 @@ public class Monster extends Player {
                 if (opcao <= pesos[0]){
                     Goblin goblin = new Goblin();
                     
-                    //players.add(new Monster("Goblin", 10, 10, 10, 10));
+                    //players.add(new Monster("Goblin", 10, 10, 10, 10, 1));
                 }
                 else if (opcao <= pesos[1]){
                     Aranha aranha = new Aranha();
-                    //players.add(new Monster("Orc", 15, 15, 15, 15));
+                    //players.add(new Monster("Orc", 15, 15, 15, 15, 1));
                 }
                 else if (opcao <= pesos[2]){
                     Goster goster = new Goster();
-                    //players.add(new Monster("Esqueleto", 10, 10, 10, 10));
+                    //players.add(new Monster("Esqueleto", 10, 10, 10, 10, 1));
                 }
                 else if (opcao <= pesos[3]){
                     Orc orc = new Orc();
-                    //players.add(new Monster("Zumbi", 10, 10, 10, 10));
+                    //players.add(new Monster("Zumbi", 10, 10, 10, 10, 1));
                 }
                 else if (opcao <= pesos[4]){
                     Zabur zabur = new Zabur();
-                    //players.add(new Monster("Lobo", 10, 10, 10, 10));
+                    //players.add(new Monster("Lobo", 10, 10, 10, 10, 1));
                 }
                 System.out.println("Monstro " + players.get(i).getName() + " criado!");
             }

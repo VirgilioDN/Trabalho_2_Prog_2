@@ -10,15 +10,17 @@ public class Player {
     protected int destreza;
     protected int intelecto;
     protected int health;
+    protected int atual_health;
     protected int ataque;
     protected int defesa;
     protected int velocidade;
+    protected double aggro;
     protected static ArrayList<Player> players = new ArrayList<Player>();
 
     public Player() {
     }
     
-    public Player(String name, int forca, int constituicao, int destreza, int intelecto) {
+    public Player(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
         this.name = name;
         this.forca = forca;
         this.constituicao = constituicao;
@@ -28,6 +30,8 @@ public class Player {
         this.ataque = forca * 2;
         this.defesa = constituicao * 2;
         this.velocidade = destreza * 2;
+        this.atual_health = this.health;
+        this.aggro = aggro;
         players.add(this);
     }
 
@@ -67,6 +71,14 @@ public class Player {
         return velocidade;
     }
 
+    public int getAtual_Health(){
+        return atual_health;
+    }
+
+    public double getAggro(){
+        return aggro;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -95,6 +107,8 @@ public class Player {
         this.ataque = ataque;
     }
     
+    //TODO
+    //debugar a esquiva, ela sempre ta esquivando
     public Boolean esquiva(Player player) {
     	Dado player_dado = new Dado();
     	Dado monstro_dado = new Dado();
@@ -110,8 +124,8 @@ public class Player {
     	if(this.esquiva(player)) {
     		System.out.println("O jogador " + this.name + " esquivou");
     	}else {
-    		player.health -= this.ataque - (player.defesa * 0.4);
-            System.out.println("O jogador " + this.name + " atacou o jogador " + player.name + " com " + this.ataque + " de dano.");
+    		player.health -= (player.defesa * 0.4) - this.ataque ;
+            System.out.println("O jogador " + this.name + " atacou o jogador " + player.name + " com " + ((player.defesa * 0.4) - this.ataque) + " de dano.");
     	}
     }
 
@@ -146,7 +160,7 @@ public class Player {
     
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| \u2764\uFE0F %-8d |  ", p.getHealth());
+            System.out.printf("| \u2764\uFE0F %-8d |  ",p.getHealth(), "/" ,p.getAtual_Health());
         }
         System.out.println();
     

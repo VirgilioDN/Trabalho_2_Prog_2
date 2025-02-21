@@ -8,7 +8,7 @@ public class Goblin extends Monster {
     static int gob = 0;
 
     public Goblin() {
-        super("Goblin " + (++gob), 10, 2, 1, 1);
+        super("Goblin " + (++gob), 10, 2, 1, 1,1);
     }
 
 }
