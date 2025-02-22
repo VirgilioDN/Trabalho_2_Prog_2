@@ -53,6 +53,34 @@ public class Turno {
                 }
                 // Ação do jogador
                 System.out.println("Vez do jogador " + player.getName());
+                if (player instanceof Hero) {
+                    System.out.println("Qual mosntro você deseja atacar?");
+
+                    // Cria array para armazenar os indices dos monstros
+                    int[] q = new int[monstros.size()];
+                    int i = 1;
+
+                    // Mostra os monstros para o usuario
+                    for (Monster m : monstros) {
+                        q[i - 1] = i - 1;
+                        System.out.println(i + "- " + m.getName());
+                        i++;
+                    }
+                    System.out.println();
+
+                    // Escolha de ataque
+                    int escolha = s.nextInt();
+                    for (int j : q) {
+                        if (escolha - 1 == j) {
+                            player.acao(monstros.get(j));
+                        }
+
+                    }
+
+                } else {
+                    // Ação do monstro
+                    continue;
+                }
             }
 
             // Verifica se algum time está morto para decidir o vencedor
@@ -61,15 +89,6 @@ public class Turno {
                 break;
             } else if (h.isTeamDead(monstros)) {
                 System.out.println("A batalha acabou! O time dos monstros perdeu!");
-                break;
-            }
-
-            // Verifica se o usuario quer continuar jogando
-            System.out.println("Quer continar o jogo? (s/n)");
-
-            String continuar = s.nextLine();
-            if (continuar.equals("n")) {
-                System.out.println("A batalha foi encerrada!");
                 break;
             }
             turnoAtual++;

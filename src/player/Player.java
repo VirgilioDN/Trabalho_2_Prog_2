@@ -1,6 +1,9 @@
 package player;
 
 import app.Dado;
+import classe_herois.*;
+import classe_monstros.*;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -33,6 +36,10 @@ public class Player {
         this.atual_health = this.health;
         this.aggro = aggro;
         players.add(this);
+    }
+
+    public static ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public String getName() {
@@ -186,5 +193,37 @@ public class Player {
             }
         }
         return true;
+    }
+
+    public void acao(Player player) {
+        // Verifica qual classe tal jodgador pertence e chama o método de ação
+        if (player instanceof Arqueiro) {
+            // Arqueiro arqueiro = (Arqueiro) player;
+            // arqueiro.realizarAcao(player);
+        } else if (this instanceof Guerreiro) {
+            // Down cast para ter certeza de que é um tipo de herói
+            Guerreiro guerreiro = (Guerreiro) this;
+            guerreiro.realizarAcao(player);
+        } else if (player instanceof Mago) {
+            this.attack(player);
+        } else if (player instanceof Clerigo) {
+            this.attack(player);
+        } else if (player instanceof Ladino) {
+            this.attack(player);
+        } else if (player instanceof Paladino) {
+            this.attack(player);
+        } else if (player instanceof Aranha) {
+            this.attack(player);
+        } else if (player instanceof Goster) {
+            this.attack(player);
+        } else if (player instanceof Goblin) {
+            this.attack(player);
+        } else if (player instanceof Orc) {
+            this.attack(player);
+        } else if (player instanceof Harag) {
+            this.attack(player);
+        } else if (player instanceof Zabur) {
+            this.attack(player);
+        }
     }
 }
