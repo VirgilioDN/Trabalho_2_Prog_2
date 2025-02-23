@@ -40,13 +40,12 @@ public class Turno {
     }
 
     public void jogarTurno(Hero h, Game game) {
-        //IA usada pelos monstros para atacar os herois
-        // Como nao tem a batalha ainda, pra acabar o jogo,é usado um input
+        // Input para escolher o monstro a ser atacado
         Scanner s = new Scanner(System.in);
 
         // Verifica se algum time está morto (se pelo menos um dos jogadores dos dois
         // times estiver vivo, continua o jogo)
-        while (!h.isTeamDead(herois) && !h.isTeamDead(monstros)) {    
+        while (!h.isTeamDead(herois) && !h.isTeamDead(monstros)) {
             for (Player player : ordemPlayers) {
                 Player.listaPlayers();
                 // Verifica se o jogador está morto
@@ -75,7 +74,13 @@ public class Turno {
                     int escolha = s.nextInt();
                     for (int j : q) {
                         if (escolha - 1 == j) {
-                            player.acao(monstros.get(j));
+                            if (monstros.get(j).isDead()) {
+                                System.out.println(
+                                        "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
+                                break;
+                            } else {
+                                player.acao(monstros.get(j));
+                            }
                         }
 
                     }

@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Excessoes.NomeInvalido;
 import app.Dado;
 import classe_herois.Arqueiro;
 import classe_herois.Mago;
@@ -14,6 +15,7 @@ import classe_herois.Clerigo;
 
 public class Hero extends Player {
 	private static ArrayList<Hero> heros = new ArrayList<Hero>();
+	private static NomeInvalido verificaNome = new NomeInvalido();
 
 	public Hero() {
 	}
@@ -29,9 +31,19 @@ public class Hero extends Player {
 	public static void criarPersonagem() {
 		Scanner s = new Scanner(System.in);
 		for (int i = 0; i <= 3; ++i) {
+			String name = "";
+			boolean nomeValido = false;
+			while (!nomeValido) {
+				try {
+					System.out.println("Digite o nome do personagem: ");
+					name = s.nextLine();
+					verificaNome.verificaNome(name);
+					nomeValido = true;
+				} catch (NomeInvalido e) {
+					System.out.println(e.getMessage());
+				}
 
-			System.out.println("Digite o nome do personagem: ");
-			String name = s.nextLine();
+			}
 
 			System.out.println("Escolha a classe de seu personagem!");
 			System.out.println("1 - Guerreiro\n" +
@@ -213,34 +225,36 @@ public class Hero extends Player {
 	}
 
 	// testes
-	/*public static void menuHeroi() {
-		IA a = new IA(heros);
-		System.out.println(a);
-		for (int i = 0; i < 4; i++) {
-			Hero player_atual = heros.get(i);
-			Scanner s = new Scanner(System.in);
-			System.out.println("Ataque - 1\nIA - 2");
-			int r = s.nextInt();
-			int escolha;
-			switch (r) {
-				case 1:
-					System.out.println("Quem quer atacar?\n");
-					escolha = s.nextInt();
-					player_atual.attack(heros.get(escolha - 1));
-					listaPlayers();
-					heroAtributos();
-					break;
-				case 2:
-					a.IA_monstros(player_atual);
-					listaPlayers();
-					heroAtributos();
-					break;
-				default:
-					System.out.println("Opção inválida!");
-					break;
-			}
-		}
-	}*/
+	/*
+	 * public static void menuHeroi() {
+	 * IA a = new IA(heros);
+	 * System.out.println(a);
+	 * for (int i = 0; i < 4; i++) {
+	 * Hero player_atual = heros.get(i);
+	 * Scanner s = new Scanner(System.in);
+	 * System.out.println("Ataque - 1\nIA - 2");
+	 * int r = s.nextInt();
+	 * int escolha;
+	 * switch (r) {
+	 * case 1:
+	 * System.out.println("Quem quer atacar?\n");
+	 * escolha = s.nextInt();
+	 * player_atual.attack(heros.get(escolha - 1));
+	 * listaPlayers();
+	 * heroAtributos();
+	 * break;
+	 * case 2:
+	 * a.IA_monstros(player_atual);
+	 * listaPlayers();
+	 * heroAtributos();
+	 * break;
+	 * default:
+	 * System.out.println("Opção inválida!");
+	 * break;
+	 * }
+	 * }
+	 * }
+	 */
 
 	public static ArrayList<Hero> getHeros() {
 		return heros;
