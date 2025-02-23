@@ -157,26 +157,38 @@ public class Player {
 
         // Linha superior das caixas
         for (Player p : players) {
-            System.out.printf("+------------+  ");
+            System.out.printf("+-------------+  ");
         }
         System.out.println();
 
         // Nome dos jogadores
         for (Player p : players) {
-            System.out.printf("| %-10s |  ", p.getName());
+            System.out.printf("| %-11s |  ", p.getName());
         }
         System.out.println();
 
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| \u2764\uFE0F %-8d |  ", p.getHealth(), "/", p.getAtual_Health());
-            System.out.printf("/", p.getAtual_Health());
+            System.out.printf("| \u2764\uFE0F %-9d |  ", p.getHealth());
+            //System.out.printf("/", p.getAtual_Health());
+        }
+        System.out.println();
+
+        for (Player p : players) {
+            System.out.printf("| Ataque:%-4d |  ", p.getAtaque());
+            //System.out.printf("/", p.getAtual_Health());
+        }
+        System.out.println();
+
+        for (Player p : players) {
+            System.out.printf("| Def:%-7d |  ", p.getDefesa());
+            //System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
         // Linha inferior das caixas
         for (Player p : players) {
-            System.out.printf("+------------+  ");
+            System.out.printf("+-------------+  ");
         }
         System.out.println("\n");
 

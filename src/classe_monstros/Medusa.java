@@ -1,17 +1,15 @@
 package classe_monstros;
-
-import player.Hero;
 import player.Monster;
+import player.Hero;
 
-//Boss
-public class Harag extends Monster {
-    private int qtdAtaqueEspecial = 0;
+public class Medusa extends Monster {
+    static int medusa = 0;
 
-    public Harag() {
-        super("Harag ", 20, 500, 3, 10,1);
+    public Medusa() {
+        super("Medusa " + (++medusa), 18, 600, 20, 15, 1);
     }
-    
-    public void ataqueEspecial (){
+
+    public void ataqueEspecial(Hero hero) {
         if ((qtdAtaqueEspecial < 2) && (super.getConstituicao() < 75)){
             for (Hero h : Hero.getHeros()){
                 h.setHealth((h.getHealth() - super.attack(h)));

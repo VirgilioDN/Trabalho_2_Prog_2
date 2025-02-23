@@ -1,10 +1,8 @@
 package app;
 
-import java.lang.reflect.Array;
+import Turno.Turno;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import Turno.Turno;
 import player.Hero;
 import player.Monster;
 import player.Player;
@@ -18,7 +16,6 @@ public class Game {
 
     public Game() {
         setDificuldade();
-        Hero.criarPersonagem();
         Monster.criaMonstros();
         Player.listaPlayers();
         Hero.heroAtributos();
