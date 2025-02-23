@@ -6,7 +6,7 @@ import player.Player;
 public class Dragao extends Monster {
 
     public Dragao() {
-        super("Dragão ", 16, 700, 5, 10, 1);
+        super("Dragão ", 16, 70, 5, 10, 1);
     }
 
     public void ataqueEspecial() {

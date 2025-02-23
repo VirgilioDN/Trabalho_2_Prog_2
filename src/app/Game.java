@@ -4,6 +4,7 @@ import Turno.Turno;
 import java.util.ArrayList;
 import java.util.Scanner;
 import player.Hero;
+import player.IA;
 import player.Monster;
 import player.Player;
 
@@ -16,14 +17,11 @@ public class Game {
 
     public Game() {
         setDificuldade();
+        Hero.criarPersonagem();
         Monster.criaMonstros();
-        Player.listaPlayers();
-        Hero.heroAtributos();
+        //Player.listaPlayers();
+        //Hero.heroAtributos();
         // Hero.menuHeroi();
-        ArrayList<Hero> herois = Hero.getHerois();
-        ArrayList<Monster> monstros = Monster.getMonstros();
-        Turno t = new Turno(herois, monstros);
-        t.jogarTurno(new Hero());
     }
 
     public void comecarJogo() {

@@ -8,7 +8,7 @@ public class Harag extends Monster {
     private int qtdAtaqueEspecial = 0;
 
     public Harag() {
-        super("Harag ", 20, 500, 3, 10,1);
+        super("Harag ", 20, 50, 3, 10,1);
     }
     
     public void ataqueEspecial (){

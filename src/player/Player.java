@@ -131,7 +131,7 @@ public class Player {
         if (this.esquiva(player)) {
             System.out.println(player.name + " esquivou do ataque de " + this.name);
         } else {
-            player.health -= this.ataque - (player.defesa * 0.4);
+            player.atual_health -= this.ataque - (player.defesa * 0.4);
             System.out.println(this.name + " atacou o jogador " + player.name + " com "
                     + (this.ataque - (player.defesa * 0.4)) + " de dano.");
         }
@@ -169,7 +169,7 @@ public class Player {
 
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| \u2764\uFE0F %-9d |  ", p.getHealth());
+            System.out.printf("| \u2764\uFE0F %-9d |  ", p.getAtual_Health());
             //System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
@@ -226,11 +226,11 @@ public class Player {
             this.attack(player);
         } else if (player instanceof Aranha) {
             this.attack(player);
-        } else if (player instanceof Goster) {
+        } else if (player instanceof Gnomo) {
             this.attack(player);
         } else if (player instanceof Goblin) {
             this.attack(player);
-        } else if (player instanceof Orc) {
+        } else if (player instanceof Troll) {
             this.attack(player);
         } else if (player instanceof Harag) {
             this.attack(player);

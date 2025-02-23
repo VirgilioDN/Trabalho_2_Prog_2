@@ -213,7 +213,7 @@ public class Hero extends Player {
 	}
 
 	// testes
-	public static void menuHeroi() {
+	/*public static void menuHeroi() {
 		IA a = new IA(heros);
 		System.out.println(a);
 		for (int i = 0; i < 4; i++) {
@@ -240,7 +240,7 @@ public class Hero extends Player {
 					break;
 			}
 		}
-	}
+	}*/
 
 	public static ArrayList<Hero> getHeros() {
 		return heros;

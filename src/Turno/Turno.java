@@ -4,7 +4,9 @@ package Turno;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import app.Game;
 import player.Hero;
+import player.IA;
 import player.Monster;
 import player.Player;
 
@@ -37,15 +39,16 @@ public class Turno {
         return turnoAtual;
     }
 
-    public void jogarTurno(Hero h) {
+    public void jogarTurno(Hero h, Game game) {
+        //IA usada pelos monstros para atacar os herois
         // Como nao tem a batalha ainda, pra acabar o jogo,é usado um input
         Scanner s = new Scanner(System.in);
 
         // Verifica se algum time está morto (se pelo menos um dos jogadores dos dois
         // times estiver vivo, continua o jogo)
-        while (!h.isTeamDead(herois) && !h.isTeamDead(monstros)) {
-
+        while (!h.isTeamDead(herois) && !h.isTeamDead(monstros)) {    
             for (Player player : ordemPlayers) {
+                Player.listaPlayers();
                 // Verifica se o jogador está morto
                 if (player.isDead()) {
                     System.out.println("O jogador " + player.getName() + " está morto e por isso não terá ação.");
@@ -78,8 +81,8 @@ public class Turno {
                     }
 
                 } else {
-                    // Ação do monstro
-                    continue;
+                    IA ia = new IA(herois, game);
+                    ia.IA_monstros(player);
                 }
             }
 

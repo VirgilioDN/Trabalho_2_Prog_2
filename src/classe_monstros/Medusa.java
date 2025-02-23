@@ -6,7 +6,7 @@ public class Medusa extends Monster {
     static int medusa = 0;
 
     public Medusa() {
-        super("Medusa " + (++medusa), 18, 600, 20, 15, 1);
+        super("Medusa " + (++medusa), 18, 60, 20, 15, 1);
     }
 
     public void ataqueEspecial(Hero hero) {
