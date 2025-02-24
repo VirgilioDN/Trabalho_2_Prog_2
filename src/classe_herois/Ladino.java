@@ -63,7 +63,7 @@ public class Ladino extends Hero{
 				// defender();
 				break;
 			case 3://INVISIBILIDADE AINDA NAO EXISTE
-				System.out.println("Escolha o ataque especial:  1 - Apunhalar  2 - Lançar bomba  3 - Invisibilidade(NAO IPLEMENTADO)");
+				System.out.println("Escolha o ataque especial:  1 - Apunhalar  2 - Lançar bomba");
 				acao = s.nextInt();
 				switch (acao) {
 					case 1:

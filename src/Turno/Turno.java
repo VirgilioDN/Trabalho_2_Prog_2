@@ -83,7 +83,7 @@ public class Turno {
                                         Log.registrarAcao("Monstro escolhido morto.");
                                     break;
                             } else {
-                                player.acao(monstros.get(j), monstros);
+                                player.acao(monstros.get(j), monstros, herois);
 
                             // Verifica se o monstro morreu após o ataque
                             if (monstros.get(j).isDead()) {
