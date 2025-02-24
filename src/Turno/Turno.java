@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import app.Game;
+import log.Log;
 import player.Hero;
 import player.IA;
 import player.Monster;
@@ -46,6 +47,7 @@ public class Turno {
         // Verifica se algum time está morto (se pelo menos um dos jogadores dos dois
         // times estiver vivo, continua o jogo)
         while (!h.isTeamDead(herois) && !h.isTeamDead(monstros)) {
+            Log.registrarAcao("Turno "+ turnoAtual);
             for (Player player : ordemPlayers) {
                 Player.listaPlayers();
                 // Verifica se o jogador está morto
@@ -55,6 +57,7 @@ public class Turno {
                 }
                 // Ação do jogador
                 System.out.println("Vez do jogador " + player.getName());
+                Log.registrarAcao("Vez do jogador " + player.getName());
                 if (player instanceof Hero) {
                     System.out.println("Qual monstro você deseja atacar?");
 
@@ -77,9 +80,22 @@ public class Turno {
                             if (monstros.get(j).isDead()) {
                                 System.out.println(
                                         "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
-                                break;
+                                        Log.registrarAcao("Monstro escolhido morto.");
+                                    break;
                             } else {
                                 player.acao(monstros.get(j), monstros);
+
+                            // Verifica se o monstro morreu após o ataque
+                            if (monstros.get(j).isDead()) {
+                                Log.registrarAcao("O monstro " + monstros.get(j).getName() + " foi derrotado!");
+                            }
+
+                            // Verifica se o jogador morreu após a ação
+                            if (player.isDead()) {
+                                Log.registrarAcao("O jogador " + player.getName() + " morreu durante o turno.");
+                                System.out.println("O jogador " + player.getName() + " morreu durante o turno.");
+
+                            }
                             }
                         }
 
@@ -94,8 +110,10 @@ public class Turno {
             // Verifica se algum time está morto para decidir o vencedor
             if (h.isTeamDead(herois)) {
                 System.out.println("A batalha acabou! O time dos heróis perdeu!");
+                Log.registrarAcao("A batalha acabou! O time dos heróis perdeu!");
                 break;
             } else if (h.isTeamDead(monstros)) {
+                Log.registrarAcao("A batalha acabou! O time dos monstros perdeu!");
                 System.out.println("A batalha acabou! O time dos monstros perdeu!");
                 break;
             }

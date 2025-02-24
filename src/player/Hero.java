@@ -11,6 +11,7 @@ import classe_herois.Mago;
 import classe_herois.Guerreiro;
 import classe_herois.Ladino;
 import classe_herois.Paladino;
+import log.Log;
 import classe_herois.Clerigo;
 
 public class Hero extends Player {
@@ -195,6 +196,12 @@ public class Hero extends Player {
 					}
 				}
 				s.nextLine();
+				Log.registrarAcao("Novo personagem criado chamado" + name + "com a classe de" + opcao);
+				Log.registrarAcao("Atributos:\n" +
+									"Força: "+ forca + "\n" + 
+									"Constituição: "+ constituicao + "\n" + 
+									"Destreza: "+ destreza + "\n" + 
+									"Intelecto: "+ intelecto);
 
 			} while (atributos > 0);
 		}

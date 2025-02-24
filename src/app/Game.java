@@ -1,8 +1,11 @@
 package app;
 
 import Turno.Turno;
+import log.Log;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import player.Hero;
 import player.IA;
 import player.Monster;
@@ -40,10 +43,13 @@ public class Game {
         System.out.println("3 - Difícil");
         int opcao = s.nextInt();
         if (opcao == 1) {
+            Log.registrarAcao("Dificuldade escolhida: Fácil" );
             Game.dificuldade = Level.FACIL;
         } else if (opcao == 2) {
+            Log.registrarAcao("Dificuldade escolhida: Médio" );
             Game.dificuldade = Level.MEDIO;
         } else if (opcao == 3) {
+            Log.registrarAcao("Dificuldade escolhida: Difícil" );
             Game.dificuldade = Level.DIFICIL;
         }
     }
