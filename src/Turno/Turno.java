@@ -56,7 +56,7 @@ public class Turno {
                 // Ação do jogador
                 System.out.println("Vez do jogador " + player.getName());
                 if (player instanceof Hero) {
-                    System.out.println("Qual mosntro você deseja atacar?");
+                    System.out.println("Qual monstro você deseja atacar?");
 
                     // Cria array para armazenar os indices dos monstros
                     int[] q = new int[monstros.size()];
@@ -79,7 +79,7 @@ public class Turno {
                                         "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
                                 break;
                             } else {
-                                player.acao(monstros.get(j));
+                                player.acao(monstros.get(j), monstros);
                             }
                         }
 

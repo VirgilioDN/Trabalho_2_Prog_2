@@ -114,27 +114,88 @@ public class Player {
         this.ataque = ataque;
     }
 
-    // TODO
-    // debugar a esquiva, ela sempre ta esquivando
-    public Boolean esquiva(Player player) {
-        Dado player_dado = new Dado();
-        Dado monstro_dado = new Dado();
-        if ((player_dado.D20()) > (monstro_dado.D20() + (player.destreza * 0.4))) {
-            return true;
-        } else {
-            return false;
-        }
-
+    public enum Acerto{
+        ACERTO, ERRO, ACERTO_CRITICO;
     }
 
-    public void attack(Player player) {
-        if (this.esquiva(player)) {
-            System.out.println(player.name + " esquivou do ataque de " + this.name);
-        } else {
-            player.atual_health -= this.ataque - (player.defesa * 0.4);
-            System.out.println(this.name + " atacou o jogador " + player.name + " com "
-                    + (this.ataque - (player.defesa * 0.4)) + " de dano.");
+    public void attack(Player player){
+        Dado dado = new Dado();
+        Acerto hit;
+        if(15 > (dado.D20() + Math.floor((Math.log(player.destreza)/Math.log(3))))){
+            hit = Acerto.ERRO;
+        } else{
+            if(16 < dado.D20()+ Math.floor((Math.log(this.destreza)/Math.log(2.4)))){
+                hit = Acerto.ACERTO_CRITICO;
+            }else{
+                hit = Acerto.ACERTO;
+            }
         }
+
+        switch (hit) {
+            case ERRO:
+                System.out.println(player.name + " esquivou do ataque de " + this.name);
+                break;
+            case ACERTO:
+            if(this.ataque - Math.floor((Math.log(player.defesa)/Math.log(1.33))) < 0){
+                player.atual_health -= this.ataque * 0.3;
+                System.out.println(this.name + " acertou o jogador " + player.name + " causando " + (this.ataque * 0.3) + " de dano.");
+            } else{                
+                player.atual_health -= this.ataque - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+                System.out.println(this.name + " acertou o jogador " + player.name + ", causando " + (this.ataque - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+            }
+                break;
+            case ACERTO_CRITICO:
+                player.atual_health -= this.ataque * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+                System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.ataque * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void attack_crit(Player player){
+        player.atual_health -= this.ataque * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+        System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.ataque * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+    }
+
+    public void attack_mago(Player player){
+        Dado dado = new Dado();
+        Acerto hit;
+        if(15 > (dado.D20() + Math.floor((Math.log(player.destreza)/Math.log(3))))){
+            hit = Acerto.ERRO;
+        } else{
+            if(16 < dado.D20()+ Math.floor((Math.log(this.destreza)/Math.log(2.4)))){
+                hit = Acerto.ACERTO_CRITICO;
+            }else{
+                hit = Acerto.ACERTO;
+            }
+        }
+
+        switch (hit) {
+            case ERRO:
+                System.out.println(player.name + " esquivou do ataque de " + this.name);
+                break;
+            case ACERTO:
+            if(this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33))) < 0){
+                player.atual_health -= this.intelecto * 0.3;
+                System.out.println(this.name + " acertou o jogador " + player.name + " causando " + (this.intelecto * 0.3) + " de dano.");
+            } else{                
+                player.atual_health -= this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+                System.out.println(this.name + " acertou o jogador " + player.name + ", causando " + (this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+            }
+                break;
+            case ACERTO_CRITICO:
+                player.atual_health -= this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+                System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void attack_mago_crit(Player player){
+        player.atual_health -= this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+        System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
     }
 
     /*
@@ -152,43 +213,45 @@ public class Player {
         // Criar
     }
 
+    //TODO
+    //aumentar
     public static void listaPlayers() {
         System.out.println("\n=== Lista de Jogadores ===\n");
 
         // Linha superior das caixas
         for (Player p : players) {
-            System.out.printf("+-------------+  ");
+            System.out.printf("+-------------------+  ");
         }
         System.out.println();
 
         // Nome dos jogadores
         for (Player p : players) {
-            System.out.printf("| %-11s |  ", p.getName());
+            System.out.printf("| %-17s |  ", p.getName());
         }
         System.out.println();
 
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| \u2764\uFE0F %-9d |  ", p.getAtual_Health());
+            System.out.printf("| Vida: %-3d/%-7d |  ", p.health , p.atual_health);
             //System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
         for (Player p : players) {
-            System.out.printf("| Ataque:%-4d |  ", p.getAtaque());
+            System.out.printf("| Ataque: %-9d |  ", p.getAtaque());
             //System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
         for (Player p : players) {
-            System.out.printf("| Def:%-7d |  ", p.getDefesa());
+            System.out.printf("| Def: %-12d |  ", p.getDefesa());
             //System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
         // Linha inferior das caixas
         for (Player p : players) {
-            System.out.printf("+-------------+  ");
+            System.out.printf("+-------------------+  ");
         }
         System.out.println("\n");
 
@@ -207,35 +270,28 @@ public class Player {
         return true;
     }
 
-    public void acao(Player player) {
+    public void acao(Player player, ArrayList<Monster> monstros) {
         // Verifica qual classe tal jodgador pertence e chama o método de ação
         if (player instanceof Arqueiro) {
-            // Arqueiro arqueiro = (Arqueiro) player;
-            // arqueiro.realizarAcao(player);
+            //Arqueiro arqueiro = (Arqueiro) player;
+            //arqueiro.realizarAcao(player);
         } else if (this instanceof Guerreiro) {
+
             // Down cast para ter certeza de que é um tipo de herói
             Guerreiro guerreiro = (Guerreiro) this;
-            guerreiro.realizarAcao(player);
-        } else if (player instanceof Mago) {
-            this.attack(player);
+            guerreiro.realizarAcao(player, monstros);
+
+        } else if (this instanceof Mago) {
+
+            Mago mago = (Mago) this;
+            mago.realizarAcao(player, monstros);
+
         } else if (player instanceof Clerigo) {
             this.attack(player);
         } else if (player instanceof Ladino) {
             this.attack(player);
         } else if (player instanceof Paladino) {
             this.attack(player);
-        } else if (player instanceof Aranha) {
-            this.attack(player);
-        } else if (player instanceof Gnomo) {
-            this.attack(player);
-        } else if (player instanceof Goblin) {
-            this.attack(player);
-        } else if (player instanceof Troll) {
-            this.attack(player);
-        } else if (player instanceof Harag) {
-            this.attack(player);
-        } else if (player instanceof Zabur) {
-            this.attack(player);
-        }
+        } 
     }
 }

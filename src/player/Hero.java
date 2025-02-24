@@ -224,38 +224,6 @@ public class Hero extends Player {
 		}
 	}
 
-	// testes
-	/*
-	 * public static void menuHeroi() {
-	 * IA a = new IA(heros);
-	 * System.out.println(a);
-	 * for (int i = 0; i < 4; i++) {
-	 * Hero player_atual = heros.get(i);
-	 * Scanner s = new Scanner(System.in);
-	 * System.out.println("Ataque - 1\nIA - 2");
-	 * int r = s.nextInt();
-	 * int escolha;
-	 * switch (r) {
-	 * case 1:
-	 * System.out.println("Quem quer atacar?\n");
-	 * escolha = s.nextInt();
-	 * player_atual.attack(heros.get(escolha - 1));
-	 * listaPlayers();
-	 * heroAtributos();
-	 * break;
-	 * case 2:
-	 * a.IA_monstros(player_atual);
-	 * listaPlayers();
-	 * heroAtributos();
-	 * break;
-	 * default:
-	 * System.out.println("Opção inválida!");
-	 * break;
-	 * }
-	 * }
-	 * }
-	 */
-
 	public static ArrayList<Hero> getHeros() {
 		return heros;
 	}
