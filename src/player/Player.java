@@ -383,7 +383,7 @@ public class Player {
                 int escolha = s.nextInt();
                 for (int j : q) {
                     if (escolha - 1 == j) {
-                        if (monstros.get(j).getHealth() <= 0) {
+                        if (monstros.get(j).isDead()) {
                             System.out.println(
                                     "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
                             Log.registrarAcao("Monstro escolhido morto.");
@@ -398,7 +398,7 @@ public class Player {
                             }
 
                             // Verifica se o monstro morreu após o ataque
-                            if (monstros.get(j).getHealth() <= 0) {
+                            if (monstros.get(j).isDead()) {
                                 Log.registrarAcao(
                                         "O monstro " + monstros.get(j).getName() + " foi derrotado!");
                                 System.out.println(
@@ -406,7 +406,7 @@ public class Player {
                             }
 
                             // Verifica se o jogador morreu após a ação
-                            if (this.getHealth() <= 0) {
+                            if (this.isDead()) {
                                 Log.registrarAcao(
                                         "O jogador " + this.getName() + " morreu durante o turno.");
                                 System.out.println(
