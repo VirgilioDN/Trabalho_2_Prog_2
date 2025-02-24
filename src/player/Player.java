@@ -119,6 +119,7 @@ public class Player {
         ACERTO, ERRO, ACERTO_CRITICO;
     }
 
+    //ataques 
     public void attack(Player player){
         Dado dado = new Dado();
         Acerto hit;
@@ -164,6 +165,7 @@ public class Player {
         Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.ataque * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
     }
 
+    //ataque de mago
     public void attack_mago(Player player){
         Dado dado = new Dado();
         Acerto hit;
@@ -188,15 +190,15 @@ public class Player {
                 System.out.println(this.name + " acertou o jogador " + player.name + " causando " + (this.intelecto * 0.3) + " de dano.");
                 Log.registrarAcao(this.name + " acertou o jogador " + player.name + " causando " + (this.intelecto * 0.3) + " de dano.");
             } else{                
-                player.atual_health -= this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+                player.atual_health -= this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
                 System.out.println(this.name + " acertou o jogador " + player.name + ", causando " + (this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
                 Log.registrarAcao(this.name + " acertou o jogador " + player.name + ", causando " + (this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
             }
                 break;
             case ACERTO_CRITICO:
-                player.atual_health -= this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
-                System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
-                Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+                player.atual_health -= this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+                System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+                Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
                 break;
             default:
                 break;
@@ -204,9 +206,9 @@ public class Player {
     }
 
     public void attack_mago_crit(Player player){
-        player.atual_health -= this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
-        System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
-        Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 4 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+        player.atual_health -= this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
+        System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+        Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
     }
 
     /*
@@ -247,7 +249,7 @@ public class Player {
 
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| Vida: %-3d/%-7d |  ", p.health , p.atual_health);
+            System.out.printf("| Vida: %-3d/%-7d |  ", p.atual_health , p.health);
             //System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
@@ -287,9 +289,11 @@ public class Player {
 
     public void acao(Player player, ArrayList<Monster> monstros) {
         // Verifica qual classe tal jodgador pertence e chama o método de ação
-        if (player instanceof Arqueiro) {
-            //Arqueiro arqueiro = (Arqueiro) player;
-            //arqueiro.realizarAcao(player);
+        if (this instanceof Arqueiro) {
+
+            Arqueiro arqueiro = (Arqueiro) this;
+            arqueiro.realizarAcao(player,monstros);
+
         } else if (this instanceof Guerreiro) {
 
             // Down cast para ter certeza de que é um tipo de herói
@@ -302,10 +306,15 @@ public class Player {
             mago.realizarAcao(player, monstros);
 
         } else if (player instanceof Clerigo) {
+
             this.attack(player);
-        } else if (player instanceof Ladino) {
-            this.attack(player);
+        } else if (this instanceof Ladino) {
+
+            Ladino ladino = (Ladino) this;
+            ladino.realizarAcao(player, monstros);
+
         } else if (player instanceof Paladino) {
+
             this.attack(player);
         } 
     }

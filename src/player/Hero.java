@@ -182,9 +182,9 @@ public class Hero extends Player {
 							break;
 						case 6:
 							intelecto = forca += 12;
-							constituicao += 18;
+							constituicao += 10;
 							destreza += 12;
-							intelecto += 8;
+							intelecto += 6;
 							aggro = 1;
 							Arqueiro arqueiro = new Arqueiro(name, forca, constituicao, destreza, intelecto, aggro);
 							System.out.println("Personagem criado com sucesso!\n");

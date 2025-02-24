@@ -8,7 +8,7 @@ import player.Monster;
 import player.Player;
 
 public class Mago extends Hero{
-	private static int magias = 5;
+	private int magias = 3;
 	
     public Mago(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
     	super(name, forca, constituicao, destreza, intelecto, aggro);
@@ -39,13 +39,8 @@ public class Mago extends Hero{
 	}
 
 	public void realizarAcao(Player p, ArrayList<Monster> monstros) {
-		System.out.println("Qual será sua ação?");
-		System.out.println("1 - Atacar");
-		System.out.println("2 - Defender");
-		System.out.println("3 - Usar habilidade especial");
 		Scanner s = new Scanner(System.in);
-		int acao = s.nextInt();
-
+		int acao;
 		//pega os adjacentes para uso de ataques especiais
 		
 		int indice_direira = -1;
@@ -61,6 +56,12 @@ public class Mago extends Hero{
 
 		boolean condição = true;
 	do{
+		condição = true;
+		System.out.println("Qual será sua ação?");
+		System.out.println("1 - Atacar");
+		System.out.println("2 - Defender");
+		System.out.println("3 - Usar habilidade especial");
+		acao = s.nextInt();
 		switch (acao) {
 			case 1:
 				this.attack_mago(p);
@@ -95,9 +96,11 @@ public class Mago extends Hero{
 				break;
 			} else{
 				System.out.println("Você não tem magias o suficiente. Realize outra ação");
+				break;
 			}
 			default:
 				System.out.println("Ação inválida");
+				break;
 		}
 	}while (condição);
 

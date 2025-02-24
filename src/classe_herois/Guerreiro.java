@@ -8,8 +8,7 @@ import player.Monster;
 import player.Player;
 
 public class Guerreiro extends Hero {
-	private static int aggro = 125;
-	private int furia;
+	//private int furia;
 
 	public Guerreiro(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
 		super(name, forca, constituicao, destreza, intelecto, aggro);
@@ -17,16 +16,14 @@ public class Guerreiro extends Hero {
 
 	public void golpeLateral(Player p, int player_esquerda, int player_direita, ArrayList<Monster> monstros) {
 		if(player_direita < monstros.size() && player_direita >= 0 && player_esquerda > -1){
+			this.attack(monstros.get(player_esquerda));
 			this.attack(p);
 			this.attack(monstros.get(player_direita));
-			this.attack(monstros.get(player_esquerda));
 		} else if(player_direita == -1){
-			this.attack(p);
 			this.attack(monstros.get(player_esquerda));
+			this.attack(p);
 		} else if(player_esquerda == -1){
 			this.attack(p);
-			System.out.println("esquerda" + player_direita);
-			System.out.println(player_esquerda);
 			this.attack(monstros.get(player_direita));
 		}
 
