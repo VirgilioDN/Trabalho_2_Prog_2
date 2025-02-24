@@ -45,29 +45,36 @@ public class Hero extends Player {
 				}
 
 			}
+			
+			int opcao = 1;
+			do {
+				if(opcao < 0 || opcao > 7){
+					System.out.println("Opção inválida, escolha novamente");
+					System.out.println();
+				}
+				System.out.println();
+				System.out.println("Escolha a classe de seu personagem!");
+				System.out.println("1 - Guerreiro\n" +
+						"Atributos: Força: 15, Constituição: 12, Destreza: 7, Intelecto: 7");
+				System.out.println("2 - Mago\n" +
+						"Atributos: Força: 7, Constituição: 10, Destreza: 9, Intelecto: 14");
+				System.out.println("3 - Ladino\n" +
+						"Atributos: Força: 12, Constituição: 7, Destreza: 14, Intelecto: 7");
+				System.out.println("4 - Paladino\n" +
+						"Atributos: Força: 12, Constituição: 14, Destreza: 6, Intelecto: 8");
+				System.out.println("5 - Clérigo\n" +
+						"Atributos: Força: 8, Constituição: 12, Destreza: 8, Intelecto: 12");
+				System.out.println("6 - Arqueiro\n" +
+						"Atributos: Força: 12, Constituição: 10, Destreza: 12, Intelecto: 8");
 
-			System.out.println("Escolha a classe de seu personagem!");
-			System.out.println("1 - Guerreiro\n" +
-					"Atributos: Força: 15, Constituição: 12, Destreza: 7, Intelecto: 7");
-			System.out.println("2 - Mago\n" +
-					"Atributos: Força: 7, Constituição: 10, Destreza: 9, Intelecto: 14");
-			System.out.println("3 - Ladino\n" +
-					"Atributos: Força: 12, Constituição: 7, Destreza: 14, Intelecto: 7");
-			System.out.println("4 - Paladino\n" +
-					"Atributos: Força: 12, Constituição: 14, Destreza: 6, Intelecto: 8");
-			System.out.println("5 - Clérigo\n" +
-					"Atributos: Força: 8, Constituição: 12, Destreza: 8, Intelecto: 12");
-			System.out.println("6 - Arqueiro\n" +
-					"Atributos: Força: 12, Constituição: 10, Destreza: 12, Intelecto: 8");
+				//tratamento de exceção aq
+				opcao = s.nextInt();
+		}while(opcao < 0 || opcao > 7);
 
-			// nao vejo necessidade de um sair
-			// System.out.println("7 - Sair");
-
-			int opcao = s.nextInt();
-
-			System.out.println("Agora, para continuar a criação do personagem,\n" +
+			System.out.println();
+			System.out.println("Agora, para continuar a criação do personagem," +
 					"você jogará três D6 para distribuir o resultado nos atributos do seu jogador.\n" +
-					" Você deve distribuí-los entre força, constituição, destreza e intelecto.\n");
+					"Você deve distribuí-los entre força, constituição, destreza e intelecto.\n");
 
 			// criação dos dados
 			Dado dado1 = new Dado();
@@ -87,41 +94,50 @@ public class Hero extends Player {
 				System.out.println("Pontos de atributo disponíveis: " + atributos);
 
 				// força
-				System.out.print("Quantos pontos quer atribuir a Força? ");
+				System.out.println();
+				System.out.println("Quantos pontos quer atribuir a Força? Pontos restantes:" + atributos + " ");
+				
 				int forca = s.nextInt();
 				while (atributos - forca < 0) {
 					System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
-					System.out.print("Quantos pontos quer atribuir a Força? ");
+					System.out.println();
+					System.out.println("Quantos pontos quer atribuir a Força? Pontos restantes:" + atributos + " ");
 					forca = s.nextInt();
 				}
 				atributos -= forca;
 
 				// Constituição
-				System.out.print("Quantos pontos quer atribuir a Constituição? ");
+				System.out.println();
+				System.out.println("Quantos pontos quer atribuir a Constituição?  Pontos restantes:" + atributos + " ");
 				int constituicao = s.nextInt();
 				while (atributos - constituicao < 0) {
 					System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
-					System.out.print("Quantos pontos quer atribuir a Constituição? ");
+					System.out.println();
+					System.out.println("Quantos pontos quer atribuir a Constituição?  Pontos restantes:" + atributos + " ");
 					constituicao = s.nextInt();
 				}
 				atributos -= constituicao;
 
 				// destreza
-				System.out.print("Quantos pontos quer atribuir a Destreza? ");
+				System.out.println();
+				System.out.println("Quantos pontos quer atribuir a Destreza?  Pontos restantes:" + atributos + " ");
 				int destreza = s.nextInt();
 				while (atributos - destreza < 0) {
 					System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
-					System.out.print("Quantos pontos quer atribuir a destreza? ");
+					System.out.println();
+					System.out.println("Quantos pontos quer atribuir a destreza?  Pontos restantes:" + atributos + " ");
 					destreza = s.nextInt();
 				}
 				atributos -= destreza;
 
 				// intelecto
-				System.out.print("Quantos pontos quer atribuir a Intelecto? ");
+				System.out.println();
+				System.out.println("Quantos pontos quer atribuir a Intelecto?  Pontos restantes:" + atributos + " ");
 				int intelecto = s.nextInt();
 				while (atributos - intelecto < 0) {
 					System.out.println("Não há pontos o suficiente para atribuir. Tente novamente");
-					System.out.print("Quantos pontos quer atribuir a Intelecto? ");
+					System.out.println();
+					System.out.println("Quantos pontos quer atribuir a Intelecto?  Pontos restantes:" + atributos + " ");
 					intelecto = s.nextInt();
 				}
 				atributos -= intelecto;
@@ -204,30 +220,6 @@ public class Hero extends Player {
 									"Intelecto: "+ intelecto);
 
 			} while (atributos > 0);
-		}
-	}
-
-	public void listarPersonagens() {
-		for (Hero hero : heros) {
-			System.out.println("Nome: " + hero.getName());
-			System.out.println("Força: " + hero.getForca());
-			System.out.println("Constituição: " + hero.getConstituicao());
-			System.out.println("Destreza: " + hero.getDestreza());
-			System.out.println("Intelecto: " + hero.getIntelecto());
-			// debug
-			System.out.println("aggro: " + hero.getAggro());
-			System.out.println();
-			System.out.println();
-		}
-	}
-
-	public static void heroAtributos() {
-		for (Hero hero : heros) {
-			System.out.println("Dano: " + hero.getAtaque());
-			System.out.println("Vida: " + hero.getHealth() + "/" + hero.getAtual_Health());
-			System.out.println("Defesa: " + hero.getDefesa());
-			System.out.println("Velociade: " + hero.getVelocidade());
-			System.out.println();
 		}
 	}
 

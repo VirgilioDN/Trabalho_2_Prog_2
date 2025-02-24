@@ -37,6 +37,9 @@ public class Arqueiro extends Hero {
 		//ataca aleatoriamente um monstro na lista e dps retira para que ele nao seja atacado dnv
 		Random r = new Random();
 		for(int i = 0; i < 2;i++){
+			if(auxiliar.isEmpty() == true){
+				break;
+			}
 			int prox_monstro = r.nextInt(0, auxiliar.size()-1);
 			this.attack(auxiliar.get(prox_monstro));
 			auxiliar.remove(prox_monstro);
@@ -77,7 +80,7 @@ public class Arqueiro extends Hero {
 				break;
 			case 3:
 			if(flechas_especiais > 0){
-				System.out.println("Escolha a magia:  1 - Chuva de flechas  2 - Ricochete");
+				System.out.println("Escolha a magia:  1 - Chuva de flechas  2 - Ricochete  3 - Flecha incapacitadora (não implementado)");
 				acao = s.nextInt();
 				switch (acao) {
 					case 1:
