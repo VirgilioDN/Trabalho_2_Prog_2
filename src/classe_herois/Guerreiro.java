@@ -62,7 +62,7 @@ public class Guerreiro extends Hero {
 				// defender();
 				break;
 			case 3:
-				System.out.println("Escolha o ataque especial:  1 - Golpe lateral  2 - Estocada");
+				System.out.println("Escolha o ataque especial:  1 - Golpe lateral  2 - Estocada  3 - Golpe incapacitador (não implementado)");
 				acao = s.nextInt();
 				switch (acao) {
 					case 1:

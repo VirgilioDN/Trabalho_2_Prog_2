@@ -64,8 +64,8 @@ public class Clerigo extends Hero {
 							break;
 					}
 					break;
-				} else {
-					System.out.println("Você não tem favores_divinos o suficiente. Realize outra ação");
+				} else{
+					System.out.println("Você não tem Favores Divinos o suficiente. Realize outra ação");
 					break;
 				}
 			default:
