@@ -116,12 +116,12 @@ public class Player {
         this.ataque = ataque;
     }
 
-    public enum Acerto{
+    public enum Acerto {
         ACERTO, ERRO, ACERTO_CRITICO;
     }
 
-    //ataques 
-    public void attack(Player player){
+    // ataques
+    public void attack(Player player) {
         Dado dado = new Dado();
         Acerto hit;
         if(14 <= (dado.D20() + Math.floor((Math.log(player.destreza)/Math.log(3))))){
@@ -205,20 +205,26 @@ public class Player {
                 Log.registrarAcao(player.name + " esquivou do ataque de " + this.name);
                 break;
             case ACERTO:
-            if(this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33))) < 0){
-                player.atual_health -= this.intelecto * 0.3;
-                System.out.println(this.name + " acertou o jogador " + player.name + " causando " + (this.intelecto * 0.3) + " de dano.");
-                Log.registrarAcao(this.name + " acertou o jogador " + player.name + " causando " + (this.intelecto * 0.3) + " de dano.");
-            } else{                
-                player.atual_health -= this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
-                System.out.println(this.name + " acertou o jogador " + player.name + ", causando " + (this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
-                Log.registrarAcao(this.name + " acertou o jogador " + player.name + ", causando " + (this.intelecto - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
-            }
+                if (this.ataque - Math.floor((Math.log(player.defesa) / Math.log(1.33))) < 0) {
+                    player.atual_health -= this.ataque * 0.3;
+                    System.out.println(this.name + " acertou o jogador " + player.name + " causando "
+                            + (this.ataque * 0.3) + " de dano.");
+                    Log.registrarAcao(this.name + " acertou o jogador " + player.name + " causando "
+                            + (this.ataque * 0.3) + " de dano.");
+                } else {
+                    player.atual_health -= this.ataque - Math.floor((Math.log(player.defesa) / Math.log(1.33)));
+                    System.out.println(this.name + " acertou o jogador " + player.name + ", causando "
+                            + (this.ataque - Math.floor((Math.log(player.defesa) / Math.log(1.33)))) + " de dano.");
+                    Log.registrarAcao(this.name + " acertou o jogador " + player.name + ", causando "
+                            + (this.ataque - Math.floor((Math.log(player.defesa) / Math.log(1.33)))) + " de dano.");
+                }
                 break;
             case ACERTO_CRITICO:
-                player.atual_health -= this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)));
-                System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
-                Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando " + (this.intelecto * 2 - Math.floor((Math.log(player.defesa)/Math.log(1.33)))) + " de dano.");
+                player.atual_health -= this.ataque * 2 - Math.floor((Math.log(player.defesa) / Math.log(1.33)));
+                System.out.println(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando "
+                        + (this.ataque * 2 - Math.floor((Math.log(player.defesa) / Math.log(1.33)))) + " de dano.");
+                Log.registrarAcao(this.name + " acertou o jogador " + player.name + " com um ACERTO CRÍTICO! causando "
+                        + (this.ataque * 2 - Math.floor((Math.log(player.defesa) / Math.log(1.33)))) + " de dano.");
                 break;
             default:
                 break;
@@ -249,9 +255,9 @@ public class Player {
         }
     }
 
-    //tratamento de excessao
-    public void cura(ArrayList<Hero> herois){
-        Scanner s =  new Scanner(System.in);
+    // tratamento de excessao
+    public void cura(ArrayList<Hero> herois) {
+        Scanner s = new Scanner(System.in);
         System.out.println("Quem você deseja curar?");
 
         int[] q = new int[herois.size()];
@@ -286,8 +292,8 @@ public class Player {
         }
     }
 
-    //tratamento de excessao
-    public void cura_em_massa(ArrayList<Hero> herois){
+    // tratamento de excessao
+    public void cura_em_massa(ArrayList<Hero> herois) {
         for (Hero m : herois) {
            if(m.isDead()){
             System.out.println("Ops! Parece que o heroi" + m.name + " está morto! Ele não pode ser curado");
@@ -300,7 +306,7 @@ public class Player {
                     m.atual_health += 15 + Math.ceil(this.intelecto * 0.5 + this.constituicao * 0.5);
                     System.out.println(this.name + " curou " + 15 + Math.ceil(this.intelecto * 0.5 + this.constituicao * 0.5) + " de vida do jogador " + m.name);
                 }
-           }
+            }
         }
     }
 
@@ -312,16 +318,15 @@ public class Player {
      * "O jogador " + this.name + " bloqueou o ataque do jogador " + player.name +
      * " com " + this.defesa
      * + " de dano.");
-     * Log.registrarAcao("O jogador " + this.name + " bloqueou o ataque do jogador " + player.name +
+     * Log.registrarAcao("O jogador " + this.name + " bloqueou o ataque do jogador "
+     * + player.name +
      * " com " + this.defesa
      * + " de dano.");
      * }
      */
 
-
-
-    //TODO
-    //aumentar
+    // TODO
+    // aumentar
     public static void listaPlayers() {
         System.out.println("\n=== Lista de Jogadores ===\n");
 
@@ -339,20 +344,20 @@ public class Player {
 
         // Vida dos jogadores com coração ❤️
         for (Player p : players) {
-            System.out.printf("| Vida: %-3d/%-7d |  ", p.atual_health , p.health);
-            //System.out.printf("/", p.getAtual_Health());
+            System.out.printf("| Vida: %-3d/%-7d |  ", p.atual_health, p.health);
+            // System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
         for (Player p : players) {
             System.out.printf("| Ataque: %-9d |  ", p.getAtaque());
-            //System.out.printf("/", p.getAtual_Health());
+            // System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
         for (Player p : players) {
             System.out.printf("| Def: %-12d |  ", p.getDefesa());
-            //System.out.printf("/", p.getAtual_Health());
+            // System.out.printf("/", p.getAtual_Health());
         }
         System.out.println();
 
@@ -377,12 +382,90 @@ public class Player {
         return true;
     }
 
+    public void acaoComCura(ArrayList<Monster> monstros, ArrayList<Hero> herois, Scanner s) {
+        boolean condition = true;
+        do {
+            System.out.println("Qual será sua ação?");
+            System.out.println("1 - Atacar");
+            System.out.println("2 - Curar");
+            System.out.println("3 - Usar habilidade especial");
+            int acao = s.nextInt();
+            if (acao == 1 || acao == 3) {
+                condition = false;
+                System.out.println("Qual monstro você deseja atacar?");
+
+                // Cria array para armazenar os indices dos monstros
+                int[] q = new int[monstros.size()];
+                int i = 1;
+
+                // Mostra os monstros para o usuario
+                for (Monster m : monstros) {
+                    q[i - 1] = i - 1;
+                    System.out.println(i + "- " + m.getName());
+                    i++;
+                }
+                System.out.println();
+
+                // Escolha de ataque
+                int escolha = s.nextInt();
+                for (int j : q) {
+                    if (escolha - 1 == j) {
+                        if (monstros.get(j).isDead()) {
+                            System.out.println(
+                                    "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
+                            Log.registrarAcao("Monstro escolhido morto.");
+                            break;
+                        } else {
+                            if (this instanceof Clerigo) {
+                                Clerigo clerigo = (Clerigo) this;
+                                clerigo.realizarAcao(monstros.get(j), monstros, herois, acao);
+                            } else if (this instanceof Paladino) {
+                                // Paladino paladino = (Paladino) this;
+                                // paladino.realizarAcao(monstros.get(j), monstros, herois, acao);
+                            }
+
+                            // Verifica se o monstro morreu após o ataque
+                            if (monstros.get(j).isDead()) {
+                                Log.registrarAcao(
+                                        "O monstro " + monstros.get(j).getName() + " foi derrotado!");
+                                System.out.println(
+                                        "O monstro " + monstros.get(j).getName() + " foi derrotado!");
+                            }
+
+                            // Verifica se o jogador morreu após a ação
+                            if (this.isDead()) {
+                                Log.registrarAcao(
+                                        "O jogador " + this.getName() + " morreu durante o turno.");
+                                System.out.println(
+                                        "O jogador " + this.getName() + " morreu durante o turno.");
+
+                            }
+                        }
+                    }
+
+                }
+            } else if (acao == 2) {
+                if (this instanceof Clerigo) {
+                    Clerigo clerigo = (Clerigo) this;
+                    clerigo.realizarAcao(monstros.get(0), monstros, herois, acao);
+                } else if (this instanceof Paladino) {
+                    // Paladino paladino = (Paladino) this;
+                    // paladino.realizarAcao(monstros.get(0), monstros, herois, acao);
+                }
+                condition = false;
+
+            } else if (acao < 1 || acao > 3) {
+                condition = true;
+            }
+        } while (condition);
+    }
+
     public void acao(Player player, ArrayList<Monster> monstros, ArrayList<Hero> herois) {
         // Verifica qual classe tal jodgador pertence e chama o método de ação
         if (this instanceof Arqueiro) {
 
             Arqueiro arqueiro = (Arqueiro) this;
-            arqueiro.realizarAcao(player,monstros);
+            arqueiro.realizarAcao(player, monstros);
 
         } else if (this instanceof Guerreiro) {
 
@@ -395,19 +478,11 @@ public class Player {
             Mago mago = (Mago) this;
             mago.realizarAcao(player, monstros);
 
-        } else if (this instanceof Clerigo) {
-
-            Clerigo clerigo = (Clerigo) this;
-            clerigo.realizarAcao(player, monstros, herois);
-
         } else if (this instanceof Ladino) {
 
             Ladino ladino = (Ladino) this;
             ladino.realizarAcao(player, monstros);
 
-        } else if (player instanceof Paladino) {
-
-            this.attack(player);
-        } 
+        }
     }
 }
