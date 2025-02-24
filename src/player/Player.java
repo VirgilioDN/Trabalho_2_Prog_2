@@ -383,7 +383,7 @@ public class Player {
                 int escolha = s.nextInt();
                 for (int j : q) {
                     if (escolha - 1 == j) {
-                        if (monstros.get(j).isDead()) {
+                        if (monstros.get(j).getHealth() <= 0) {
                             System.out.println(
                                     "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
                             Log.registrarAcao("Monstro escolhido morto.");
@@ -398,7 +398,7 @@ public class Player {
                             }
 
                             // Verifica se o monstro morreu após o ataque
-                            if (monstros.get(j).isDead()) {
+                            if (monstros.get(j).getHealth() <= 0) {
                                 Log.registrarAcao(
                                         "O monstro " + monstros.get(j).getName() + " foi derrotado!");
                                 System.out.println(
@@ -406,7 +406,7 @@ public class Player {
                             }
 
                             // Verifica se o jogador morreu após a ação
-                            if (this.isDead()) {
+                            if (this.getHealth() <= 0) {
                                 Log.registrarAcao(
                                         "O jogador " + this.getName() + " morreu durante o turno.");
                                 System.out.println(
@@ -418,17 +418,17 @@ public class Player {
 
                 }
             } else if (acao == 2) {
-                condition = false;
-
-            } else if (acao < 1 || acao > 3) {
-                condition = true;
                 if (this instanceof Clerigo) {
                     Clerigo clerigo = (Clerigo) this;
                     clerigo.realizarAcao(monstros.get(0), monstros, herois, acao);
                 } else if (this instanceof Paladino) {
                     // Paladino paladino = (Paladino) this;
-                    // paladino.realizarAcao(monstros.get(j), monstros, herois, acao);
+                    // paladino.realizarAcao(monstros.get(0), monstros, herois, acao);
                 }
+                condition = false;
+
+            } else if (acao < 1 || acao > 3) {
+                condition = true;
             }
         } while (condition);
     }

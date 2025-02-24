@@ -53,7 +53,7 @@ public class Turno {
             for (Player player : ordemPlayers) {
                 Player.listaPlayers();
                 // Verifica se o jogador está morto
-                if (player.isDead()) {
+                if (player.getHealth() <= 0) {
                     System.out.println("O jogador " + player.getName() + " está morto e por isso não terá ação.");
                     continue;
                 }
@@ -85,7 +85,7 @@ public class Turno {
                     int escolha = s.nextInt();
                     for (int j : q) {
                         if (escolha - 1 == j) {
-                            if (monstros.get(j).isDead()) {
+                            if (monstros.get(j).getHealth() <= 0) {
                                 System.out.println(
                                         "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
                                 Log.registrarAcao("Monstro escolhido morto.");
@@ -94,13 +94,13 @@ public class Turno {
                                 player.acao(monstros.get(j), monstros, herois);
 
                                 // Verifica se o monstro morreu após o ataque
-                                if (monstros.get(j).isDead()) {
+                                if (monstros.get(j).getHealth() <= 0) {
                                     Log.registrarAcao("O monstro " + monstros.get(j).getName() + " foi derrotado!");
                                     System.out.println("O monstro " + monstros.get(j).getName() + " foi derrotado!");
                                 }
 
                                 // Verifica se o jogador morreu após a ação
-                                if (player.isDead()) {
+                                if (player.getHealth() <= 0) {
                                     Log.registrarAcao("O jogador " + player.getName() + " morreu durante o turno.");
                                     System.out.println("O jogador " + player.getName() + " morreu durante o turno.");
 

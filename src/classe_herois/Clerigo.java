@@ -41,7 +41,7 @@ public class Clerigo extends Hero {
 				this.attack_mago(p);
 				break;
 			case 2:
-				// defender();
+				this.cura(herois);
 				break;
 			case 3:
 				if (favores_divinos > 0) {
