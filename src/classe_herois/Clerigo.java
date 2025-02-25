@@ -35,43 +35,49 @@ public class Clerigo extends Hero {
 		if (indice - 1 > 0) {
 			indice_esquerda = indice - 1;
 		}
-
-		switch (acao) {
-			case 1:
-				this.attack_mago(p);
-				break;
-			case 2:
-				this.cura(herois);
-				break;
-			case 3:
-				if (favores_divinos > 0) {
-					System.out.println("Escolha a magia:  1 - Curar  2 - Cura em massa  3 - Julgamento Divino");
-					acao = s.nextInt();
-					switch (acao) {
-						case 1:
-							cura(herois);
-							favores_divinos -= 1;
-							break;
-						case 2:
-							cura_em_massa(herois);
-							favores_divinos -= 1;
-							break;
-						case 3:
-							julgamento_divino(monstros);
-							favores_divinos -= 1;
-							break;
-						default:
-							break;
+		boolean condição = true;
+		do {
+			condição = true;
+			switch (acao) {
+				case 1:
+					condição = false;
+					this.attack_mago(p);
+					break;
+				case 2:
+					condição = false;
+					this.cura(herois);
+					break;
+				case 3:
+					condição = false;
+					if (favores_divinos > 0) {
+						System.out.println("Escolha a magia:  1 - Curar  2 - Cura em massa  3 - Julgamento Divino");
+						acao = s.nextInt();
+						switch (acao) {
+							case 1:
+								cura(herois);
+								favores_divinos -= 1;
+								break;
+							case 2:
+								cura_em_massa(herois);
+								favores_divinos -= 1;
+								break;
+							case 3:
+								julgamento_divino(monstros);
+								favores_divinos -= 1;
+								break;
+							default:
+								break;
+						}
+						break;
+					} else {
+						System.out.println("Você não tem Favores Divinos o suficiente. Realize outra ação");
+						break;
 					}
+				default:
+					System.out.println("Ação inválida");
 					break;
-				} else{
-					System.out.println("Você não tem Favores Divinos o suficiente. Realize outra ação");
-					break;
-				}
-			default:
-				System.out.println("Ação inválida");
-				break;
-		}
+			}
+		} while (condição);
 
 	}
 

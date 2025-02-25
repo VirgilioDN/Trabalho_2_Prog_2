@@ -426,7 +426,8 @@ public class Player {
                     // Escolha de ataque
                     int escolha = s.nextInt();
                     if (escolha < 1 || escolha > monstros.size()) {
-                        System.out.println("Escolha inválida! Você perdeu a vez!");
+                        System.out.println("Escolha inválida! escolha entre 1 e " + monstros.size());
+                        condition = true;
                         continue;
                     }
                     for (int j : q) {
@@ -441,8 +442,8 @@ public class Player {
                                     Clerigo clerigo = (Clerigo) this;
                                     clerigo.realizarAcao(monstros.get(j), monstros, herois, acao);
                                 } else if (this instanceof Paladino) {
-                                    // Paladino paladino = (Paladino) this;
-                                    // paladino.realizarAcao(monstros.get(j), monstros, herois, acao);
+                                    Paladino paladino = (Paladino) this;
+                                    paladino.realizarAcao(monstros.get(j), monstros, herois, acao);
                                 }
 
                                 // Verifica se o monstro morreu após o ataque
@@ -470,17 +471,18 @@ public class Player {
                         Clerigo clerigo = (Clerigo) this;
                         clerigo.realizarAcao(monstros.get(0), monstros, herois, acao);
                     } else if (this instanceof Paladino) {
-                        // Paladino paladino = (Paladino) this;
-                        // paladino.realizarAcao(monstros.get(0), monstros, herois, acao);
+                        Paladino paladino = (Paladino) this;
+                        paladino.realizarAcao(monstros.get(0), monstros, herois, acao);
                     }
                     condition = false;
 
                 } else if (acao < 1 || acao > 3) {
+                    System.out.println("Entrada Inválida! escolha entre as opções");
                     condition = true;
                 }
             } catch (Exception e) {
                 // TODO: handle exception
-                System.err.println("Entrada Inválida! Digite um número inteiro que esteja entre as opções");
+                System.err.println("Entrada Inválida! escolha entre as opções");
                 s.nextLine();
                 condition = true;
             }
