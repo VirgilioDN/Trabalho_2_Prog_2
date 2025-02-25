@@ -13,9 +13,11 @@ public class Log {
 
     // Método para exibir o histórico completo
     public static void mostrarHistorico() {
-        System.out.println("Histórico de ações:");
+        System.out.println("\n" + "+-------------------+");
+        System.out.println( "\n" + "Histórico de ações:");
         for (String acao : historico) {
             System.out.println(acao);
         }
+        System.out.println("\n" + "+-------------------+");
     }
     }

@@ -175,6 +175,12 @@ public class Hero extends Player {
 										aggro);
 								System.out.println("Personagem criado com sucesso!\n");
 								heros.add(guerreiro);
+								Log.registrarAcao("Novo personagem criado chamado " + name + " com a classe de " + "Guerreiro.");
+								Log.registrarAcao("Atributos:\n" +
+							"Força: " + forca + "\n" +
+							"Constituição: " + constituicao + "\n" +
+							"Destreza: " + destreza + "\n" +
+							"Intelecto: " + intelecto + "\n");
 								break;
 							case 2:
 								intelecto = forca += 7;
@@ -185,6 +191,12 @@ public class Hero extends Player {
 								Mago mago = new Mago(name, forca, constituicao, destreza, intelecto, aggro);
 								System.out.println("Personagem criado com sucesso!\n");
 								heros.add(mago);
+								Log.registrarAcao("Novo personagem criado chamado " + name + " com a classe de " + "Mago.");
+								Log.registrarAcao("Atributos:\n" +
+							"Força: " + forca + "\n" +
+							"Constituição: " + constituicao + "\n" +
+							"Destreza: " + destreza + "\n" +
+							"Intelecto: " + intelecto + "\n");
 								break;
 							case 3:
 								intelecto = forca += 12;
@@ -195,6 +207,12 @@ public class Hero extends Player {
 								Ladino ladino = new Ladino(name, forca, constituicao, destreza, intelecto, aggro);
 								System.out.println("Personagem criado com sucesso!\n");
 								heros.add(ladino);
+								Log.registrarAcao("Novo personagem criado chamado " + name + " com a classe de " + "Ladino.");
+								Log.registrarAcao("Atributos:\n" +
+							"Força: " + forca + "\n" +
+							"Constituição: " + constituicao + "\n" +
+							"Destreza: " + destreza + "\n" +
+							"Intelecto: " + intelecto + "\n");
 								break;
 							case 4:
 								intelecto = forca += 12;
@@ -205,6 +223,12 @@ public class Hero extends Player {
 								Paladino paladino = new Paladino(name, forca, constituicao, destreza, intelecto, aggro);
 								System.out.println("Personagem criado com sucesso!\n");
 								heros.add(paladino);
+								Log.registrarAcao("Novo personagem criado chamado " + name + " com a classe de " + "Paladino.");
+								Log.registrarAcao("Atributos:\n" +
+							"Força: " + forca + "\n" +
+							"Constituição: " + constituicao + "\n" +
+							"Destreza: " + destreza + "\n" +
+							"Intelecto: " + intelecto + "\n");
 								break;
 							case 5:
 								intelecto = forca += 8;
@@ -215,6 +239,12 @@ public class Hero extends Player {
 								Clerigo clerigo = new Clerigo(name, forca, constituicao, destreza, intelecto, aggro);
 								System.out.println("Personagem criado com sucesso!\n");
 								heros.add(clerigo);
+								Log.registrarAcao("Novo personagem criado chamado " + name + " com a classe de " + "Clérigo.");
+								Log.registrarAcao("Atributos:\n" +
+							"Força: " + forca + "\n" +
+							"Constituição: " + constituicao + "\n" +
+							"Destreza: " + destreza + "\n" +
+							"Intelecto: " + intelecto + "\n");
 								break;
 							case 6:
 								intelecto = forca += 12;
@@ -225,6 +255,12 @@ public class Hero extends Player {
 								Arqueiro arqueiro = new Arqueiro(name, forca, constituicao, destreza, intelecto, aggro);
 								System.out.println("Personagem criado com sucesso!\n");
 								heros.add(arqueiro);
+								Log.registrarAcao("Novo personagem criado chamado " + name + " com a classe de " + "Arqueiro.");
+								Log.registrarAcao("Atributos:\n" +
+							"Força: " + forca + "\n" +
+							"Constituição: " + constituicao + "\n" +
+							"Destreza: " + destreza + "\n" +
+							"Intelecto: " + intelecto + "\n");
 								break;
 							default:
 								System.out.println("Opção inválida!");

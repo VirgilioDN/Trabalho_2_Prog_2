@@ -301,7 +301,7 @@ public class Player {
                             + (this.intelecto * 0.5 + this.constituicao * 0.5))) > herois.get(j).health) {
                         int a = herois.get(j).health - herois.get(j).atual_health;
                         herois.get(j).atual_health = herois.get(j).health;
-                        System.out.println(this.name + "curou " + a + " de vida do jogador " + herois.get(j).name);
+                        System.out.println(this.name + " curou " + a + " de vida do jogador " + herois.get(j).name);
                     } else {
                         herois.get(j).atual_health += Math
                                 .ceil((30 + (this.intelecto * 0.5 + this.constituicao * 0.5)));

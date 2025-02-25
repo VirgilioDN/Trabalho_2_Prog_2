@@ -50,7 +50,7 @@ public class Turno {
         // Verifica se algum time está morto (se pelo menos um dos jogadores dos dois
         // times estiver vivo, continua o jogo)
         while (!h.isTeamDead(herois) && !h.isTeamDead(monstros)) {
-            Log.registrarAcao("Turno " + turnoAtual);
+            Log.registrarAcao( "\n" + "Turno " + turnoAtual);
             for (Player player : ordemPlayers) {
                 Player.listaPlayers();
 
