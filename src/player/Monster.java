@@ -92,4 +92,8 @@ public class Monster extends Player {
     public static ArrayList<Monster> getMonstros() {
         return monstros;
     }
+
+    public void ataqueEspecial(Hero hero) {
+        // aqui nao faza nada, apenas serve para usar nos monstros mais fortes
+    }
 }

@@ -1,4 +1,5 @@
 package classe_monstros;
+
 import player.Monster;
 import player.Hero;
 
@@ -11,11 +12,12 @@ public class Medusa extends Monster {
     }
 
     public void ataqueEspecial(Hero hero) {
-        if ((qtdAtaqueEspecial < 2) && (this.getAtual_Health() < 100)){
-            for (Hero h : Hero.getHerois()){
+        if ((qtdAtaqueEspecial > 2) && (this.getAtual_Health() < 100)) {
+            for (Hero h : Hero.getHerois()) {
                 this.attack(h);
+                qtdAtaqueEspecial = 0;
             }
-        }else{
+        } else {
             qtdAtaqueEspecial++;
             attack(hero);
         }

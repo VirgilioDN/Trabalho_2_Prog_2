@@ -7,6 +7,6 @@ public class Andarilho extends Monster {
     static int andarilho = 0;
 
     public Andarilho() {
-        super("Andarilho " + (++andarilho), 9, 7, 7 , 7, 0);
+        super("Andarilho " + (++andarilho), 9, 7, 5, 7, 0);
     }
 }
