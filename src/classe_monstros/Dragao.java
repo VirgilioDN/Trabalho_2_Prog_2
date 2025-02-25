@@ -13,7 +13,7 @@ public class Dragao extends Monster {
 
     public void ataqueEspecial(Hero hero) {
         if ((qtdAtaqueEspecial < 2) && (this.getAtual_Health() < 100)){
-            for (Hero h : Hero.getHeros()){
+            for (Hero h : Hero.getHerois()){
                 this.attack(h);
             }
         }else{

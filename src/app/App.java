@@ -35,23 +35,21 @@ public class App {
             Player.limparLista();
             monstros.clear();
             Monster.limparLista();
-            Level level = Game.getDificuldade();
 
             for (Hero h : herois) {
                 Player.addInList(h);
             }
 
-            if (level == Level.DIFICIL) {
-                Dragao dragao = new Dragao();
-                Monster.addInList(dragao);
-            } else if (level == Level.MEDIO) {
-                Medusa med = new Medusa();
-                Monster.addInList(med);
-            } else {
-                Harag hereg = new Harag();
-                Monster.addInList(hereg);
-            }
+            Dragao dragao = new Dragao();
+            Monster.addInList(dragao);
+            monstros.remove(monstros.size() - 1);
 
+            Medusa med = new Medusa();
+            Monster.addInList(med);
+            monstros.remove(monstros.size() - 1);
+
+            Harag hereg = new Harag();
+            Monster.addInList(hereg);
             monstros.remove(monstros.size() - 1);
 
             t = new Turno(herois, monstros);

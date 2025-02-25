@@ -44,8 +44,7 @@ public class Ladino extends Hero {
 				cond = true;
 				System.out.println("Qual será sua ação?");
 				System.out.println("1 - Atacar");
-				System.out.println("2 - Defender");
-				System.out.println("3 - Usar habilidade especial");
+				System.out.println("2 - Usar habilidade especial");
 				int acao = s.nextInt();
 
 				// pega os adjacentes para uso de ataques especiais
@@ -66,11 +65,7 @@ public class Ladino extends Hero {
 						this.attack(p);
 						cond = false;
 						break;
-					case 2:
-						// defender();
-						cond = false;
-						break;
-					case 3:// INVISIBILIDADE AINDA NAO EXISTE
+					case 2:// INVISIBILIDADE AINDA NAO EXISTE
 						cond = false;
 						System.out.println(
 								"Escolha o ataque especial:  1 - Apunhalar  2 - Lançar bomba");
@@ -83,6 +78,7 @@ public class Ladino extends Hero {
 								lancarBomba(p, indice_esquerda, indice_direira, monstros);
 								break;
 							default:
+								System.out.println("Ação inválida, você perdeu a vez");
 								break;
 						}
 						break;

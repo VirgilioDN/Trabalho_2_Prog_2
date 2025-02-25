@@ -66,6 +66,7 @@ public class Clerigo extends Hero {
 								favores_divinos -= 1;
 								break;
 							default:
+								System.out.println("Ação inválida, você perdeu a vez");
 								break;
 						}
 						break;

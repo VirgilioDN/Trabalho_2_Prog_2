@@ -70,8 +70,7 @@ public class Arqueiro extends Hero {
 				condição = true;
 				System.out.println("Qual será sua ação?");
 				System.out.println("1 - Atacar");
-				System.out.println("2 - Defender");
-				System.out.println("3 - Usar habilidade especial");
+				System.out.println("2 - Usar habilidade especial");
 				acao = s.nextInt();
 				switch (acao) {
 					case 1:
@@ -79,9 +78,6 @@ public class Arqueiro extends Hero {
 						condição = false;
 						break;
 					case 2:
-						// defender();
-						break;
-					case 3:
 						if (flechas_especiais > 0) {
 							System.out.println(
 									"Escolha a magia:  1 - Chuva de flechas  2 - Ricochete");
@@ -100,6 +96,7 @@ public class Arqueiro extends Hero {
 									condição = false;
 									break;
 								default:
+									System.out.println("Ação inválida");
 									break;
 							}
 							break;
@@ -114,6 +111,8 @@ public class Arqueiro extends Hero {
 			} catch (InputMismatchException e) {
 				System.err.println("Entrada Inválida! Digite um número inteiro entre 1 e 3");
 				s.nextLine();
+			} catch (Exception e){
+				System.err.println("Parece que ocorreu um erro no seu ataque, e por isso, você perdeu sua vez!");
 			}
 
 		} while (condição);

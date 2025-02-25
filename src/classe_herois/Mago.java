@@ -61,8 +61,7 @@ public class Mago extends Hero {
 				condição = true;
 				System.out.println("Qual será sua ação?");
 				System.out.println("1 - Atacar");
-				System.out.println("2 - Defender");
-				System.out.println("3 - Usar habilidade especial");
+				System.out.println("2 - Usar habilidade especial");
 				acao = s.nextInt();
 				switch (acao) {
 					case 1:
@@ -70,9 +69,6 @@ public class Mago extends Hero {
 						condição = false;
 						break;
 					case 2:
-						// defender();
-						break;
-					case 3:
 						if (magias > 0) {
 							System.out.println("Escolha a magia:  1 - Bola de fogo  2 - Nevasca  3 - Relâmpago");
 							acao = s.nextInt();

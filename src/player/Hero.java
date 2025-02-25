@@ -250,7 +250,7 @@ public class Hero extends Player {
 		}
 	}
 
-	public static ArrayList<Hero> getHeros() {
-		return heros;
-	}
+	// public static ArrayList<Hero> getHeros() {
+	// 	return heros;
+	// }
 }

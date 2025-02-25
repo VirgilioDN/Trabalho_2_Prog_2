@@ -42,7 +42,6 @@ public class Guerreiro extends Hero {
 				condition = true;
 				System.out.println("Qual será sua ação?");
 				System.out.println("1 - Atacar");
-				System.out.println("2 - Defender");
 				System.out.println("3 - Usar habilidade especial");
 
 				int acao = s.nextInt();
@@ -67,10 +66,6 @@ public class Guerreiro extends Hero {
 						break;
 					case 2:
 						condition = false;
-						// defender();
-						break;
-					case 3:
-						condition = false;
 						System.out.println(
 								"Escolha o ataque especial:  1 - Golpe lateral  2 - Estocada");
 						acao = s.nextInt();
@@ -82,6 +77,7 @@ public class Guerreiro extends Hero {
 								estocada(p);
 								break;
 							default:
+								System.out.println("Ação inválida, você perdeu a vez");
 								break;
 						}
 						break;

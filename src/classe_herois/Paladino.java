@@ -41,7 +41,8 @@ public class Paladino extends Hero {
 					condição = false;
 					break;
 				case 2:
-					// defender();
+					condição = false;
+					this.cura(herois);
 					break;
 				case 3:
 					if (oracoes > 0) {
