@@ -385,6 +385,12 @@ public class Player {
         }
         System.out.println();
 
+        for (Player p : players) {
+            System.out.printf("| Vel: %-12d |  ", p.getVelocidade());
+            // System.out.printf("/", p.getAtual_Health());
+        }
+        System.out.println();
+
         // Linha inferior das caixas
         for (Player p : players) {
             System.out.printf("+-------------------+  ");
