@@ -20,6 +20,10 @@ public class Monster extends Player {
         monstros.add(this);
     }
 
+    public static void addInList(Monster m) {
+        monstros.add(m);
+    }
+
     public static void limparLista() {
         monstros.clear();
     }

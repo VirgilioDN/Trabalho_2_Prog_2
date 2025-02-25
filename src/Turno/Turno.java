@@ -53,6 +53,12 @@ public class Turno {
             Log.registrarAcao("Turno " + turnoAtual);
             for (Player player : ordemPlayers) {
                 Player.listaPlayers();
+
+                if (h.isTeamDead(herois)) {
+                    break;
+                } else if (h.isTeamDead(monstros)) {
+                    break;
+                }
                 // Verifica se o jogador está morto
                 if (player.isDead()) {
                     System.out.println("O jogador " + player.getName() + " está morto e por isso não terá ação.");
