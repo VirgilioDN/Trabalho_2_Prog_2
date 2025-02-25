@@ -11,7 +11,7 @@ import player.Monster;
 import player.Player;
 
 public class Arqueiro extends Hero {
-	private int flechas_especiais = 3;
+	private int flechas_especiais = 1000;
 
 	public Arqueiro(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
 		super(name, forca, constituicao, destreza, intelecto, aggro);
@@ -84,7 +84,7 @@ public class Arqueiro extends Hero {
 					case 3:
 						if (flechas_especiais > 0) {
 							System.out.println(
-									"Escolha a magia:  1 - Chuva de flechas  2 - Ricochete  3 - Flecha incapacitadora (não implementado)");
+									"Escolha a magia:  1 - Chuva de flechas  2 - Ricochete");
 							acao = s.nextInt();
 							switch (acao) {
 								case 1:
