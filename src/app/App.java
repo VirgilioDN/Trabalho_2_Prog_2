@@ -40,6 +40,10 @@ public class App {
             Monster.limparLista();
             Level level = Game.getDificuldade();
 
+            for (Hero h : herois) {
+                Player.addInList(h);
+            }
+
             if (level == Level.DIFICIL) {
                 Dragao dragao = new Dragao();
                 Monster.addInList(dragao);
@@ -51,13 +55,8 @@ public class App {
                 Monster.addInList(hereg);
             }
 
-            for (Hero h : herois) {
-                Player.addInList(h);
-            }
+            monstros.remove(monstros.size() - 1);
 
-            for (Monster m : monstros) {
-                Player.addInList(m);
-            }
             t = new Turno(herois, monstros);
             t.jogarTurno(new Hero(), game);
 
