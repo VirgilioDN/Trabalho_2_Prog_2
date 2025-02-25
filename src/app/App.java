@@ -1,15 +1,12 @@
 package app;
 
-import player.IA;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import Turno.Turno;
 import app.Game.Level;
 import classe_monstros.Dragao;
 import classe_monstros.Harag;
 import classe_monstros.Medusa;
+import java.util.ArrayList;
+import log.Log;
 import player.Hero;
 import player.Monster;
 import player.Player;
@@ -68,5 +65,6 @@ public class App {
                 game.finalizarJogo();
             }
         }
+        Log.mostrarHistorico();
     }
 }

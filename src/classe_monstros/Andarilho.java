@@ -8,6 +8,5 @@ public class Andarilho extends Monster {
 
     public Andarilho() {
         super("Andarilho " + (++andarilho), 9, 7, 7 , 7, 0);
-        // vida=70, ataque=14, defesa=10, velocidade=
     }
 }
