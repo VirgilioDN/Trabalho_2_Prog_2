@@ -40,6 +40,14 @@ public class Player {
         players.add(this);
     }
 
+    public static void addInList(Player p) {
+        players.add(p);
+    }
+
+    public static void limparLista() {
+        players.clear();
+    }
+
     public static ArrayList<Player> getPlayers() {
         return players;
     }

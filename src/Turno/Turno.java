@@ -148,7 +148,7 @@ public class Turno {
             }
             turnoAtual++;
         }
-        s.close();
+        // s.close();
         System.out.println("A batalha possuiu " + this.turnoAtual + " turnos");
 
     }
