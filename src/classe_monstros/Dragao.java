@@ -4,18 +4,22 @@ import player.Hero;
 import player.Monster;
 import player.Player;
 public class Dragao extends Monster {
+    private int qtdAtaqueEspecial = 0;
 
     public Dragao() {
-        super("Dragão ", 16, 70, 5, 10, 1);
+        super("Dragão ", 18, 40, 5, 10, 1);
     }
 
-    public void ataqueEspecial() {
-        if ((qtdAtaqueEspecial < 2) && (super.getConstituicao() < 75)){
+    public void ataqueEspecial(Hero hero) {
+        if ((qtdAtaqueEspecial < 2) && (this.getAtual_Health() < 100)){
             for (Hero h : Hero.getHeros()){
-                h.setHealth((h.getHealth() - super.attack(h);));
+                this.attack(h);
             }
+        }else{
             qtdAtaqueEspecial++;
+            attack(hero);
         }
     }
 
 }
+
