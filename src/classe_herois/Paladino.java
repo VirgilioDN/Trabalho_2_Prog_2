@@ -8,7 +8,7 @@ import player.Monster;
 import player.Player;
 
 public class Paladino extends Hero {
-	private int oracoes;
+	private int oracoes = 10000;
 
 	public Paladino(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
 		super(name, forca, constituicao, destreza, intelecto, aggro);
@@ -46,7 +46,7 @@ public class Paladino extends Hero {
 				case 3:
 					if (oracoes > 0) {
 						System.out.println(
-								"Escolha a magia:  1 - Toque curativo  2 - Castigo Divino  3 - Provocar(Não implementado)");
+								"Escolha a magia:  1 - Toque curativo  2 - Castigo Divino");
 						acao = s.nextInt();
 						switch (acao) {
 							case 1:

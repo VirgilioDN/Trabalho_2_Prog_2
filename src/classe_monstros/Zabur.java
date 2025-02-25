@@ -5,7 +5,7 @@ public class Zabur extends Monster {
     static int zabur = 0;
 
     public Zabur() {
-        super("Zabur " + (++zabur), 8, 9, 9, 8, 0);
+        super("Zabur " + (++zabur), 8, 9, 6, 8, 0);
     }
 
 }

@@ -7,7 +7,7 @@ public class OrcAtirador extends Monster {
     static int orc = 0;
 
     public OrcAtirador() {
-        super("Orc " + (++orc), 10, 8, 8, 6,0);
+        super("Orc " + (++orc), 10, 8, 7, 6,0);
     }
 
 }

@@ -1,8 +1,11 @@
 package player;
 
-import java.util.ArrayList;
 import app.Dado;
 import app.Game;
+import classe_monstros.Dragao;
+import classe_monstros.Harag;
+import classe_monstros.Medusa;
+import java.util.ArrayList;
 
 public class IA{
 	private ArrayList<Hero> herois;
@@ -38,7 +41,24 @@ public class IA{
 					hero = dado.D4() - 1;
 					chance_acerto = dado.D20();
 					if(chance_acerto * herois.get(hero).aggro > 10){
-						player_atual.attack(herois.get(hero));
+						if (player_atual instanceof Dragao) {
+
+							Dragao dragao = (Dragao) player_atual;
+							dragao.ataqueEspecial(herois.get(hero));	
+					
+						} else if (player_atual instanceof Harag){
+
+							Harag harag = (Harag) player_atual;
+							harag.ataqueEspecial(herois.get(hero));
+					
+						} else if (player_atual instanceof Medusa){
+
+							Medusa medusa = (Medusa) player_atual;
+							medusa.ataqueEspecial(herois.get(hero));
+					
+						}else{
+							player_atual.attack(herois.get(hero));
+						}
 						s = false;
 					}
 				}while(s);
@@ -47,16 +67,69 @@ public class IA{
 			case MEDIO:
 				//aleatorio
 				hero = dado.D4() - 1;
-				player_atual.attack(herois.get(hero));
+				if (player_atual instanceof Dragao) {
+
+					Dragao dragao = (Dragao) player_atual;
+					dragao.ataqueEspecial(herois.get(hero));	
+				
+				} else if (player_atual instanceof Harag){
+
+					Harag harag = (Harag) player_atual;
+					harag.ataqueEspecial(herois.get(hero));
+			
+				} else if (player_atual instanceof Medusa){
+
+					Medusa medusa = (Medusa) player_atual;
+					medusa.ataqueEspecial(herois.get(hero));
+				break;
+				} else{
+					player_atual.attack(herois.get(hero));
+				}
 				break;
 
 			case DIFICIL:
 			//tenta atacar o mais fraco se nao conseguir atraca aleatorio
 				if (dado.D20() > 14){
-					player_atual.attack(herois.get(index_min_vida));
+					if (player_atual instanceof Dragao) {
+
+						Dragao dragao = (Dragao) player_atual;
+						dragao.ataqueEspecial(herois.get(index_min_vida));	
+					
+					} else if (player_atual instanceof Harag){
+						
+						Harag harag = (Harag) player_atual;
+						harag.ataqueEspecial(herois.get(index_min_vida));
+					
+					} else if (player_atual instanceof Medusa){
+
+						Medusa medusa = (Medusa) player_atual;
+						medusa.ataqueEspecial(herois.get(index_min_vida));
+						;
+					}else{
+						player_atual.attack(herois.get(index_min_vida));
+					}
+
 				} else{
 					hero = dado.D4() - 1;
-					player_atual.attack(herois.get(hero));
+					if (player_atual instanceof Dragao) {
+
+						Dragao dragao = (Dragao) player_atual;
+						dragao.ataqueEspecial(herois.get(hero));	
+
+					} else if (player_atual instanceof Harag){
+
+						Harag harag = (Harag) player_atual;
+						harag.ataqueEspecial(herois.get(hero));
+
+					} else if (player_atual instanceof Medusa){
+
+						Medusa medusa = (Medusa) player_atual;
+						medusa.ataqueEspecial(herois.get(hero));
+
+					}else{
+						player_atual.attack(herois.get(hero));
+					}
+
 				}
 				break;	
 

@@ -6,7 +6,7 @@ public class Gnomo extends Monster {
     static int gnomo = 0;
 
     public Gnomo() {
-        super("Gnomo " + (++gnomo), 5, 5, 8, 7, 0);
+        super("Gnomo " + (++gnomo), 5, 5, 4, 7, 0);
     }
 
 }

@@ -28,8 +28,8 @@ public class Game {
         // Hero.menuHeroi();
     }
 
-    public void comecarJogo() {
-
+    public void finalizarJogo() {
+        System.out.println("Fim de jogo! Obrigado por jogar.");
     }
 
     public enum Level {

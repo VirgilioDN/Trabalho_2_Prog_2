@@ -7,6 +7,6 @@ public class Aranha extends Monster {
     static int aranha = 0;
 
     public Aranha() {
-        super("Aranha " + (++aranha), 8, 5, 9, 5,1);
+        super("Aranha " + (++aranha), 8, 5, 7, 5,1);
     }
 }
