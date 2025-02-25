@@ -89,8 +89,8 @@ public class Arqueiro extends Hero {
 									condição = false;
 									break;
 								case 2:
-									ricochete(p, monstros);
 									condição = false;
+									ricochete(p, monstros);
 									break;
 								case 3:
 									condição = false;
@@ -113,6 +113,7 @@ public class Arqueiro extends Hero {
 				s.nextLine();
 			} catch (Exception e){
 				System.err.println("Parece que ocorreu um erro no seu ataque, e por isso, você perdeu sua vez!");
+				s.nextLine();
 			}
 
 		} while (condição);
