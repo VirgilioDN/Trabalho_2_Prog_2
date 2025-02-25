@@ -2,7 +2,9 @@ package app;
 
 import Turno.Turno;
 import app.Game.Level;
+import classe_monstros.Aranha;
 import classe_monstros.Dragao;
+import classe_monstros.Gargula;
 import classe_monstros.Harag;
 import classe_monstros.Medusa;
 import java.util.ArrayList;
@@ -36,21 +38,26 @@ public class App {
             monstros.clear();
             Monster.limparLista();
 
+            Level l = game.getDificuldade();
+
             for (Hero h : herois) {
                 Player.addInList(h);
             }
 
-            Dragao dragao = new Dragao();
-            Monster.addInList(dragao);
-            monstros.remove(monstros.size() - 1);
+            if(l == Level.DIFICIL){
+                Dragao dragao = new Dragao();
+            }
+            else if(l == Level.MEDIO){
+                Medusa med = new Medusa();
+            }
+            else{
+                Harag hereg = new Harag();
+            }
+            
+            Aranha a = new Aranha();
 
-            Medusa med = new Medusa();
-            Monster.addInList(med);
-            monstros.remove(monstros.size() - 1);
+            Gargula g = new Gargula();
 
-            Harag hereg = new Harag();
-            Monster.addInList(hereg);
-            monstros.remove(monstros.size() - 1);
 
             t = new Turno(herois, monstros);
             t.jogarTurno(new Hero(), game);

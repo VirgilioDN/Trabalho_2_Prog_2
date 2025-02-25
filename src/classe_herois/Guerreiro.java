@@ -42,7 +42,7 @@ public class Guerreiro extends Hero {
 				condition = true;
 				System.out.println("Qual será sua ação?");
 				System.out.println("1 - Atacar");
-				System.out.println("3 - Usar habilidade especial");
+				System.out.println("2 - Usar habilidade especial");
 
 				int acao = s.nextInt();
 

@@ -139,10 +139,10 @@ public class Turno {
             // Verifica se algum time está morto para decidir o vencedor
             if (h.isTeamDead(herois)) {
                 System.out.println("A batalha acabou! O time dos heróis perdeu!");
-                Log.registrarAcao("A batalha acabou! O time dos heróis perdeu!");
+                Log.registrarAcao("\n" + "A batalha acabou! O time dos heróis perdeu!");
                 break;
             } else if (h.isTeamDead(monstros)) {
-                Log.registrarAcao("A batalha acabou! O time dos monstros perdeu!");
+                Log.registrarAcao("\n" + "A batalha acabou! O time dos monstros perdeu!");
                 System.out.println("A batalha acabou! O time dos monstros perdeu!");
                 break;
             }
