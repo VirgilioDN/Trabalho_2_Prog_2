@@ -1,6 +1,7 @@
 package classe_herois;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -12,35 +13,36 @@ import player.Player;
 public class Arqueiro extends Hero {
 	private int flechas_especiais = 3;
 
-    public Arqueiro(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
-    	super(name, forca, constituicao, destreza, intelecto, aggro);
-    }
+	public Arqueiro(String name, int forca, int constituicao, int destreza, int intelecto, double aggro) {
+		super(name, forca, constituicao, destreza, intelecto, aggro);
+	}
 
-	//ataca todos os monstros
-	public void chuvaDFlechas(ArrayList<Monster> monstros){
-		for(Monster m : monstros){
+	// ataca todos os monstros
+	public void chuvaDFlechas(ArrayList<Monster> monstros) {
+		for (Monster m : monstros) {
 			this.attack(m);
 		}
 	}
 
-	public void ricochete(Player p, ArrayList<Monster> monstros){
+	public void ricochete(Player p, ArrayList<Monster> monstros) {
 		this.attack(p);
 
-		//cria lista auxiliar sem o montro atacado
+		// cria lista auxiliar sem o montro atacado
 		ArrayList<Monster> auxiliar = new ArrayList<Monster>();
-		for(Monster m: monstros){
-			if(m != p){
+		for (Monster m : monstros) {
+			if (m != p) {
 				auxiliar.add(m);
 			}
 		}
 
-		//ataca aleatoriamente um monstro na lista e dps retira para que ele nao seja atacado dnv
+		// ataca aleatoriamente um monstro na lista e dps retira para que ele nao seja
+		// atacado dnv
 		Random r = new Random();
-		for(int i = 0; i < 2;i++){
-			if(auxiliar.isEmpty() == true){
+		for (int i = 0; i < 2; i++) {
+			if (auxiliar.isEmpty() == true) {
 				break;
 			}
-			int prox_monstro = r.nextInt(0, auxiliar.size()-1);
+			int prox_monstro = r.nextInt(0, auxiliar.size() - 1);
 			this.attack(auxiliar.get(prox_monstro));
 			auxiliar.remove(prox_monstro);
 		}
@@ -49,67 +51,73 @@ public class Arqueiro extends Hero {
 	public void realizarAcao(Player p, ArrayList<Monster> monstros) {
 		Scanner s = new Scanner(System.in);
 		int acao;
-		//pega os adjacentes para uso de ataques especiais
-		
+		// pega os adjacentes para uso de ataques especiais
+
 		int indice_direira = -1;
 		int indice_esquerda = -1;
 		int indice = monstros.lastIndexOf(p);
 
-		if(indice + 1 < monstros.size()){
+		if (indice + 1 < monstros.size()) {
 			indice_direira = indice + 1;
 		}
-		if(indice - 1 > 0){
+		if (indice - 1 > 0) {
 			indice_esquerda = indice - 1;
 		}
 
 		boolean condição = true;
-	do{
-		condição = true;
-		System.out.println("Qual será sua ação?");
-		System.out.println("1 - Atacar");
-		System.out.println("2 - Defender");
-		System.out.println("3 - Usar habilidade especial");
-		acao = s.nextInt();
-		switch (acao) {
-			case 1:
-				this.attack(p);
-				condição = false;
-				break;
-			case 2:
-				// defender();
-				break;
-			case 3:
-			if(flechas_especiais > 0){
-				System.out.println("Escolha a magia:  1 - Chuva de flechas  2 - Ricochete  3 - Flecha incapacitadora (não implementado)");
+		do {
+			try {
+				condição = true;
+				System.out.println("Qual será sua ação?");
+				System.out.println("1 - Atacar");
+				System.out.println("2 - Defender");
+				System.out.println("3 - Usar habilidade especial");
 				acao = s.nextInt();
 				switch (acao) {
 					case 1:
-						chuvaDFlechas(monstros);
-						flechas_especiais -= 1;
+						this.attack(p);
 						condição = false;
 						break;
 					case 2:
-						ricochete(p, monstros);
-						condição = false;
+						// defender();
 						break;
 					case 3:
-						condição = false;
-						break;
+						if (flechas_especiais > 0) {
+							System.out.println(
+									"Escolha a magia:  1 - Chuva de flechas  2 - Ricochete  3 - Flecha incapacitadora (não implementado)");
+							acao = s.nextInt();
+							switch (acao) {
+								case 1:
+									chuvaDFlechas(monstros);
+									flechas_especiais -= 1;
+									condição = false;
+									break;
+								case 2:
+									ricochete(p, monstros);
+									condição = false;
+									break;
+								case 3:
+									condição = false;
+									break;
+								default:
+									break;
+							}
+							break;
+						} else {
+							System.out.println("Você não tem Flechas especiais o suficiente. Realize outra ação");
+							break;
+						}
 					default:
+						System.out.println("Ação inválida");
 						break;
 				}
-				break;
-			} else{
-				System.out.println("Você não tem Flechas especiais o suficiente. Realize outra ação");
-				break;
+			} catch (InputMismatchException e) {
+				System.err.println("Entrada Inválida! Digite um número inteiro entre 1 e 3");
+				s.nextLine();
 			}
-			default:
-				System.out.println("Ação inválida");
-				break;
-		}
-	}while (condição);
+
+		} while (condição);
 
 	}
-	
-}
 
+}

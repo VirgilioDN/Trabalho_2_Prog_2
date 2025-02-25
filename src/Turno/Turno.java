@@ -2,6 +2,7 @@ package Turno;
 
 // import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import app.Game;
@@ -73,41 +74,54 @@ public class Turno {
                     int[] q = new int[monstros.size()];
                     int i = 1;
 
-                    // Mostra os monstros para o usuario
-                    for (Monster m : monstros) {
-                        q[i - 1] = i - 1;
-                        System.out.println(i + "- " + m.getName());
-                        i++;
-                    }
-                    System.out.println();
+                    try {
+                        // Mostra os monstros para o usuario
+                        for (Monster m : monstros) {
+                            q[i - 1] = i - 1;
+                            System.out.println(i + "- " + m.getName());
+                            i++;
+                        }
+                        System.out.println();
 
-                    // Escolha de ataque
-                    int escolha = s.nextInt();
-                    for (int j : q) {
-                        if (escolha - 1 == j) {
-                            if (monstros.get(j).isDead()) {
-                                System.out.println(
-                                        "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
-                                Log.registrarAcao("Monstro escolhido morto.");
-                                break;
-                            } else {
-                                player.acao(monstros.get(j), monstros, herois);
+                        // Escolha de ataque
+                        int escolha = s.nextInt();
 
-                                // Verifica se o monstro morreu após o ataque
+                        if (escolha < 1 || escolha > monstros.size()) {
+                            System.out.println("Escolha inválida! Digite um número entre 1 e " + monstros.size());
+                            continue;
+                        }
+                        for (int j : q) {
+                            if (escolha - 1 == j) {
                                 if (monstros.get(j).isDead()) {
-                                    Log.registrarAcao("O monstro " + monstros.get(j).getName() + " foi derrotado!");
-                                    System.out.println("O monstro " + monstros.get(j).getName() + " foi derrotado!");
-                                }
+                                    System.out.println(
+                                            "Ops! Parece que o monstro escolhido está morto! Você perdeu sua vez.");
+                                    Log.registrarAcao("Monstro escolhido morto.");
+                                    break;
+                                } else {
+                                    player.acao(monstros.get(j), monstros, herois);
 
-                                // Verifica se o jogador morreu após a ação
-                                if (player.isDead()) {
-                                    Log.registrarAcao("O jogador " + player.getName() + " morreu durante o turno.");
-                                    System.out.println("O jogador " + player.getName() + " morreu durante o turno.");
+                                    // Verifica se o monstro morreu após o ataque
+                                    if (monstros.get(j).isDead()) {
+                                        Log.registrarAcao("O monstro " + monstros.get(j).getName() + " foi derrotado!");
+                                        System.out
+                                                .println("O monstro " + monstros.get(j).getName() + " foi derrotado!");
+                                    }
 
+                                    // Verifica se o jogador morreu após a ação
+                                    if (player.isDead()) {
+                                        Log.registrarAcao("O jogador " + player.getName() + " morreu durante o turno.");
+                                        System.out
+                                                .println("O jogador " + player.getName() + " morreu durante o turno.");
+
+                                    }
                                 }
                             }
+
                         }
 
+                    } catch (InputMismatchException e) {
+                        System.err.println("Entrada Inválida! Digite um número inteiro entre 1 e " + monstros.size());
+                        s.nextLine();
                     }
 
                 } else {
