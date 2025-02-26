@@ -334,23 +334,6 @@ public class Player {
         }
     }
 
-    /*
-     * será desenvolvida quando tivermos turnos
-     * public void block(Player player) {
-     * player.health -= this.defesa;
-     * System.out.println(
-     * "O jogador " + this.name + " bloqueou o ataque do jogador " + player.name +
-     * " com " + this.defesa
-     * + " de dano.");
-     * Log.registrarAcao("O jogador " + this.name + " bloqueou o ataque do jogador "
-     * + player.name +
-     * " com " + this.defesa
-     * + " de dano.");
-     * }
-     */
-
-    // TODO
-    // aumentar
     public static void listaPlayers() {
         System.out.println("\n=== Lista de Jogadores ===\n");
 
