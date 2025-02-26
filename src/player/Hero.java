@@ -274,12 +274,6 @@ public class Hero extends Player {
 						}
 					}
 					s.nextLine();
-					Log.registrarAcao("Novo personagem criado chamado" + name + "com a classe de" + opcao);
-					Log.registrarAcao("Atributos:\n" +
-							"Força: " + forca + "\n" +
-							"Constituição: " + constituicao + "\n" +
-							"Destreza: " + destreza + "\n" +
-							"Intelecto: " + intelecto);
 				} catch (InputMismatchException e) {
 					System.err.println(
 							"Entrada Inválida! Digite um número inteiro entre 0 e os pontos de atributos disponíveis");
