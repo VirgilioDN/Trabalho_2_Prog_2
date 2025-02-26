@@ -17,10 +17,16 @@ public class Harag extends Monster {
             for (Hero h : Hero.getHerois()) {
                 this.attack(h);
                 qtdAtaqueEspecial = 0;
+                if (h.isDead()) {
+                    h.setAtualHealth(0);
+                }
             }
         } else {
             qtdAtaqueEspecial++;
             attack(hero);
+            if (hero.isDead()) {
+                hero.setAtualHealth(0);
+            }
         }
     }
 

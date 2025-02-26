@@ -124,6 +124,10 @@ public class Player {
         this.ataque = ataque;
     }
 
+    public void setAtualHealth(int atual_health) {
+        this.atual_health = atual_health;
+    }
+
     public enum Acerto {
         ACERTO, ERRO, ACERTO_CRITICO;
     }
@@ -445,6 +449,7 @@ public class Player {
 
                                 // Verifica se o monstro morreu após o ataque
                                 if (monstros.get(j).isDead()) {
+                                    monstros.get(j).setAtualHealth(0);
                                     Log.registrarAcao(
                                             "O monstro " + monstros.get(j).getName() + " foi derrotado!");
                                     System.out.println(
@@ -453,6 +458,7 @@ public class Player {
 
                                 // Verifica se o jogador morreu após a ação
                                 if (this.isDead()) {
+                                    this.setAtualHealth(0);
                                     Log.registrarAcao(
                                             "O jogador " + this.getName() + " morreu durante o turno.");
                                     System.out.println(

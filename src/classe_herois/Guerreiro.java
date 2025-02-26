@@ -20,12 +20,33 @@ public class Guerreiro extends Hero {
 			this.attack(monstros.get(player_esquerda));
 			this.attack(p);
 			this.attack(monstros.get(player_direita));
+			if (monstros.get(player_esquerda).isDead()) {
+				monstros.get(player_esquerda).setAtualHealth(0);
+			}
+			if (p.isDead()) {
+				p.setAtualHealth(0);
+			}
+			if (monstros.get(player_direita).isDead()) {
+				monstros.get(player_direita).setAtualHealth(0);
+			}
 		} else if (player_direita == -1) {
 			this.attack(monstros.get(player_esquerda));
 			this.attack(p);
+			if (monstros.get(player_esquerda).isDead()) {
+				monstros.get(player_esquerda).setAtualHealth(0);
+			}
+			if (p.isDead()) {
+				p.setAtualHealth(0);
+			}
 		} else if (player_esquerda == -1) {
 			this.attack(p);
 			this.attack(monstros.get(player_direita));
+			if (p.isDead()) {
+				p.setAtualHealth(0);
+			}
+			if (monstros.get(player_direita).isDead()) {
+				monstros.get(player_direita).setAtualHealth(0);
+			}
 		}
 
 	}

@@ -17,6 +17,9 @@ public class Clerigo extends Hero {
 	public void julgamento_divino(ArrayList<Monster> monstros) {
 		for (Monster m : monstros) {
 			this.attack_mago(m);
+			if (m.isDead()) {
+				m.setAtualHealth(0);
+			}
 		}
 	}
 

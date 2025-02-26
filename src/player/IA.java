@@ -58,6 +58,9 @@ public class IA {
 
 						} else {
 							player_atual.attack(herois.get(hero));
+							if (herois.get(hero).isDead()) {
+								herois.get(hero).setAtualHealth(0);
+							}
 						}
 						s = false;
 					}
@@ -84,6 +87,9 @@ public class IA {
 					break;
 				} else {
 					player_atual.attack(herois.get(hero));
+					if (herois.get(hero).isDead()) {
+						herois.get(hero).setAtualHealth(0);
+					}
 				}
 				break;
 
@@ -107,6 +113,9 @@ public class IA {
 						;
 					} else {
 						player_atual.attack(herois.get(index_min_vida));
+						if (herois.get(index_min_vida).isDead()) {
+							herois.get(index_min_vida).setAtualHealth(0);
+						}
 					}
 
 				} else {
@@ -128,6 +137,9 @@ public class IA {
 
 					} else {
 						player_atual.attack(herois.get(hero));
+						if (herois.get(hero).isDead()) {
+							herois.get(hero).setAtualHealth(0);
+						}
 					}
 
 				}

@@ -21,6 +21,9 @@ public class Arqueiro extends Hero {
 	public void chuvaDFlechas(ArrayList<Monster> monstros) {
 		for (Monster m : monstros) {
 			this.attack(m);
+			if (m.isDead()) {
+				m.setAtualHealth(0);
+			}
 		}
 	}
 
@@ -44,6 +47,9 @@ public class Arqueiro extends Hero {
 			}
 			int prox_monstro = r.nextInt(0, auxiliar.size() - 1);
 			this.attack(auxiliar.get(prox_monstro));
+			if (auxiliar.get(prox_monstro).isDead()) {
+				auxiliar.get(prox_monstro).setAtualHealth(0);
+			}
 			auxiliar.remove(prox_monstro);
 		}
 	}
@@ -111,7 +117,7 @@ public class Arqueiro extends Hero {
 			} catch (InputMismatchException e) {
 				System.err.println("Entrada Inválida! Digite um número inteiro entre 1 e 3");
 				s.nextLine();
-			} catch (Exception e){
+			} catch (Exception e) {
 				System.err.println("Parece que ocorreu um erro no seu ataque, e por isso, você perdeu sua vez!");
 				s.nextLine();
 			}
