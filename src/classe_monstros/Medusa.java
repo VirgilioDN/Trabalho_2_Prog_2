@@ -4,7 +4,6 @@ import player.Hero;
 import player.Monster;
 
 public class Medusa extends Monster {
-    static int medusa = 0;
     private int qtdAtaqueEspecial = 0;
 
     public Medusa() {
