@@ -1,14 +1,14 @@
 package classe_monstros;
 
-import player.Monster;
 import player.Hero;
+import player.Monster;
 
 public class Medusa extends Monster {
     static int medusa = 0;
     private int qtdAtaqueEspecial = 0;
 
     public Medusa() {
-        super("Medusa " + (++medusa), 14, 30, 9, 10, 1);
+        super("Medusa ", 15, 30, 9, 10, 1);
     }
 
     public void ataqueEspecial(Hero hero) {

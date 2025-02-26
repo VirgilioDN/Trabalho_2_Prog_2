@@ -8,7 +8,7 @@ public class Harag extends Monster {
     private int qtdAtaqueEspecial = 0;
 
     public Harag() {
-        super("Harag ", 10, 35, 6, 18, 1);
+        super("Harag ", 13, 35, 6, 18, 1);
     }
 
     @Override

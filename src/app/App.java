@@ -2,11 +2,15 @@ package app;
 
 import Turno.Turno;
 import app.Game.Level;
+import classe_monstros.Andarilho;
 import classe_monstros.Aranha;
+import classe_monstros.Bruxa;
 import classe_monstros.Dragao;
-import classe_monstros.Gargula;
+import classe_monstros.Esqueleto;
 import classe_monstros.Harag;
+import classe_monstros.Lobo;
 import classe_monstros.Medusa;
+import classe_monstros.OrcAtirador;
 import java.util.ArrayList;
 import log.Log;
 import player.Hero;
@@ -46,18 +50,19 @@ public class App {
 
             if(l == Level.DIFICIL){
                 Dragao dragao = new Dragao();
+                Bruxa bruxa = new Bruxa();
+                OrcAtirador orc = new OrcAtirador();
             }
             else if(l == Level.MEDIO){
                 Medusa med = new Medusa();
+                Andarilho and = new Andarilho();
+                Lobo lobo = new Lobo();
             }
             else{
                 Harag hereg = new Harag();
+                Aranha a = new Aranha();
+                Esqueleto esq = new Esqueleto();
             }
-            
-            Aranha a = new Aranha();
-
-            Gargula g = new Gargula();
-
 
             t = new Turno(herois, monstros);
             t.jogarTurno(new Hero(), game);
